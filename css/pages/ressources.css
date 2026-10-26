@@ -13,20 +13,20 @@
 .cl-date{display:block;font-weight:400;font-size:13px;color:var(--color-gray);margin-top:4px}
 .cl-body kyolis-badge{margin-bottom:10px}
 .cl-placeholder{color:var(--color-gray);font-size:15px;font-style:italic}
-.cl-body .cl-lead{color:#3c4a50;font-size:15.5px;margin:0 0 6px}
+.cl-body .cl-lead{color:var(--color-body);font-size:15.5px;margin:0 0 6px}
 .cl-body h4{font-family:var(--font-display);font-size:12px;text-transform:uppercase;
   letter-spacing:.08em;color:var(--color-green);margin:22px 0 12px}
 .cl-list li{font-size:15px;margin-bottom:9px}
 @media(max-width:680px){.cl-entry{grid-template-columns:1fr;gap:10px}}
 
 /* Newsletter + contact */
-.signup{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
-.signup-box{border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:36px;color:var(--color-green)}
+.signup{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.signup-box{background:var(--color-white);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:32px;color:var(--color-green)}
 .signup-box h3{font-size:var(--h3);margin:16px 0 10px;color:var(--color-ink)}
 .signup-box p{color:var(--color-gray);font-size:15.5px;margin-bottom:20px}
 .signup-field{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.signup-field input{flex:1;min-width:200px;padding:13px 16px;border:1px solid var(--color-line);
-  border-radius:var(--radius-pill);font-family:inherit;font-size:15px;color:var(--color-ink)}
+.signup-field input{flex:1;min-width:200px;height:46px;padding:0 14px;border:1px solid var(--color-line-strong);
+  border-radius:var(--radius-md);font-family:inherit;font-size:15px;color:var(--color-ink)}
 .signup-field input:focus{outline:none;border-color:var(--color-green)}
 .signup-box small{display:block;margin-top:12px;color:var(--color-gray);font-size:12.5px}
 @media(max-width:760px){.signup{grid-template-columns:1fr}}

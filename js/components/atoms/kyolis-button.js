@@ -2,7 +2,9 @@
    Atome : <kyolis-button>
    Attributs :
      href     : URL (rend un <a>)
-     variant  : "green" (défaut) | "ghost"
+     variant  : "green" (défaut, le seul bouton principal du site)
+                | "ghost" (secondaire, filet clair)
+                | "ghost-dark" (secondaire sur section sombre)
      full     : présent => largeur 100%
    Contenu : le label passe en slot.
    ===================================================================== */
@@ -12,25 +14,27 @@ class KyolisButton extends KyolisElement {
   render() {
     const href = this.getAttribute('href') || '#';
     const variant = this.getAttribute('variant') || 'green';
-    const full = this.hasAttribute('full');
 
     return {
       css: `
         :host{display:inline-block}
         :host([full]){display:block}
         a{
-          display:inline-block;font-family:var(--font-display);font-weight:700;
-          font-size:15px;text-decoration:none;padding:16px 32px;
-          border-radius:var(--radius-pill);transition:transform var(--ease),background var(--ease),border-color var(--ease);
-          text-align:center;cursor:pointer;
+          display:inline-flex;align-items:center;justify-content:center;gap:8px;
+          font-family:var(--font-display);font-weight:600;font-size:15px;
+          text-decoration:none;height:46px;padding:0 22px;border-radius:var(--radius-md);
+          border:1px solid transparent;
+          transition:background var(--ease),border-color var(--ease),color var(--ease);
+          text-align:center;cursor:pointer;white-space:nowrap;
         }
-        :host([full]) a{display:block;width:100%}
-        a:hover{transform:translateY(-2px)}
-        a:focus-visible{outline:3px solid var(--color-green);outline-offset:3px}
+        :host([full]) a{display:flex;width:100%}
+        a:focus-visible{outline:2px solid var(--color-green);outline-offset:3px}
         .green{background:var(--color-green);color:var(--color-white)}
         .green:hover{background:var(--color-green-deep)}
-        .ghost{color:var(--color-ink);border:1px solid var(--color-line);background:var(--color-white)}
+        .ghost{color:var(--color-ink);border-color:var(--color-line-strong);background:var(--color-white)}
         .ghost:hover{border-color:var(--color-petrol)}
+        .ghost-dark{color:var(--dark-text);border-color:var(--dark-line-strong);background:transparent}
+        .ghost-dark:hover{border-color:var(--dark-mute);color:var(--color-white)}
       `,
       html: `<a class="${variant}" href="${href}"><slot></slot></a>`,
     };

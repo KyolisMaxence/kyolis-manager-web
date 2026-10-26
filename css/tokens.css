@@ -4,6 +4,10 @@
    y compris à travers le shadow DOM des composants (les custom
    properties CSS traversent la frontière du shadow DOM).
    Ne jamais coder une couleur en dur ailleurs : toujours via var(--*).
+
+   Couleurs et polices = charte KYOLIS. La structure (échelle de
+   surfaces, filets de 1px au lieu d'ombres, rayons serrés, rythme de
+   section de 96px, un seul bouton principal) s'inspire de Raycast.
    ===================================================================== */
 :root{
   /* Couleurs neutres */
@@ -12,7 +16,9 @@
   --color-paper:#fafbfb;
   --color-mist:#eef2f2;
   --color-line:#e4e9e9;
+  --color-line-strong:#d3dcdc;
   --color-gray:#6c7a80;
+  --color-body:#3c4a50;
 
   /* Couleurs KYOLIS */
   --color-petrol:#445760;
@@ -24,9 +30,26 @@
   --color-green-pale:#f1f8f4;
   --color-red:#d32f2f;
 
+  /* Statut d'avertissement : réservé aux illustrations d'interface
+     (comme les accents de Raycast, jamais sur les boutons ni le texte) */
+  --color-amber:#e0a030;
+  --color-red-soft:#f28b82;   /* rouge lisible sur fond sombre */
+
+  /* Échelle de surfaces sombres (sections pétrole, maquettes d'app).
+     La profondeur vient de cette échelle, pas d'ombres portées. */
+  --dark-0:var(--color-ink);           /* fond de page sombre */
+  --dark-1:var(--color-petrol-darker); /* carte */
+  --dark-2:var(--color-petrol-deep);   /* carte surélevée, ligne active */
+  --dark-3:var(--color-petrol);        /* touche, pastille */
+  --dark-line:rgba(255,255,255,.09);
+  --dark-line-strong:rgba(255,255,255,.16);
+  --dark-text:#e9eff0;
+  --dark-mute:#9fb0b6;
+
   /* Typographie */
   --font-display:"Montserrat",system-ui,sans-serif;
   --font-body:"Open Sans",system-ui,sans-serif;
+  --font-mono:ui-monospace,"Cascadia Mono","Consolas",monospace;
 
   --text-xs:12px;
   --text-sm:14.5px;
@@ -34,8 +57,8 @@
   --text-lg:19px;
   --text-xl:20px;
   --h3:21px;
-  --h2:38px;
-  --h1:52px;
+  --h2:40px;
+  --h1:58px;
 
   /* Échelle d'espacement */
   --space-1:8px;
@@ -45,17 +68,18 @@
   --space-6:48px;
   --space-8:64px;
   --space-10:80px;
+  --space-12:96px;   /* rythme de section */
   --space-13:104px;
 
-  /* Rayons */
-  --radius-sm:12px;
-  --radius-md:18px;
-  --radius-lg:22px;
+  /* Rayons : vocabulaire serré (4 à 16px), pastille réservée aux onglets */
+  --radius-xs:4px;   /* touche, petite étiquette */
+  --radius-sm:6px;   /* ligne de liste, mini-bouton */
+  --radius-md:8px;   /* bouton, champ */
+  --radius-lg:12px;  /* carte */
+  --radius-xl:16px;  /* grande maquette, formulaire */
   --radius-pill:100px;
 
   /* Divers */
-  --maxw:1120px;
-  --shadow-card:0 18px 40px -24px rgba(40,60,70,.4);
-  --shadow-float:0 24px 50px -28px rgba(40,60,70,.5);
-  --ease:.25s ease;
+  --maxw:1160px;
+  --ease:.2s ease;
 }

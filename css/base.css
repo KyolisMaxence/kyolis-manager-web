@@ -9,7 +9,7 @@
    locaux (cohérence hors-ligne / souveraineté / CNIL). Fichiers .ttf
    déjà présents dans le projet Django d'origine.
    ===================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
 
 /* --- À activer en prod à la place de l'@import :
 @font-face{font-family:"Open Sans";src:url("/assets/fonts/OpenSans-Light.ttf") format("truetype");font-weight:300}
@@ -36,21 +36,25 @@ img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--space-4)}
 .narrow{max-width:760px;margin:0 auto}
 .center{text-align:center}
+@media(max-width:560px){.wrap{padding:0 var(--space-2)}}
 
-/* Titres de contenu en light DOM (indexables) */
-h1,h2,h3{font-family:var(--font-display);letter-spacing:-.01em;color:var(--color-ink);line-height:1.12}
-h2{font-size:var(--h2);font-weight:900;margin-bottom:var(--space-3)}
-.lead{font-size:var(--text-xl);color:var(--color-gray);font-weight:300}
+/* Titres de contenu en light DOM (indexables).
+   Graisse 700 et approche serrée : plus de retenue que le 900 d'origine. */
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;color:var(--color-ink);line-height:1.12}
+h2{font-size:var(--h2);font-weight:700;margin-bottom:var(--space-3)}
+.lead{font-size:var(--text-lg);color:var(--color-gray);font-weight:400;line-height:1.6}
+@media(max-width:680px){h2{font-size:30px}.lead{font-size:17px}}
 
 /* Eyebrow réutilisé en light DOM */
-.eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:var(--text-xs);color:var(--color-green);margin-bottom:var(--space-2)}
+.eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:var(--text-xs);color:var(--color-green);margin-bottom:var(--space-2)}
 
-/* Sections */
-.section{padding:var(--space-13) 0}
-.section--paper{background:var(--color-paper)}
+/* Sections : rythme constant de 96px */
+.section{padding:var(--space-12) 0}
+.section--paper{background:var(--color-paper);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
+@media(max-width:680px){.section{padding:var(--space-8) 0}}
 
 /* Accessibilité : focus visible global */
-:focus-visible{outline:3px solid var(--color-green);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid var(--color-green);outline-offset:3px;border-radius:4px}
 
 /* Mouvement réduit respecté globalement */
 @media (prefers-reduced-motion:reduce){

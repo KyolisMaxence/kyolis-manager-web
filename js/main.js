@@ -20,6 +20,8 @@ import './components/organisms/kyolis-footer.js';
 import './components/organisms/kyolis-posture.js';
 import './components/organisms/kyolis-measure-block.js';
 import './components/organisms/kyolis-feature-block.js';
+import './components/organisms/kyolis-app-shot.js';
+import './components/organisms/kyolis-release-list.js';
 
 // Reveal au scroll : tout élément avec [data-reveal] dans le light DOM
 import { observeReveal } from './core/reveal.js';

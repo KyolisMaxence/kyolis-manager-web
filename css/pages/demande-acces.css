@@ -1,0 +1,108 @@
+/* =====================================================================
+   Page « Demander l'accès » — layouts propres (light DOM).
+   ===================================================================== */
+
+/* En-tête : deux colonnes (argumentaire + formulaire). */
+.req{padding:104px 0 var(--space-12);border-bottom:1px solid var(--color-line);
+  background:
+    linear-gradient(var(--color-white),rgba(255,255,255,0) 30%,var(--color-white) 90%),
+    repeating-linear-gradient(90deg,var(--color-line) 0 1px,transparent 1px 96px)}
+.req__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.req__pitch{position:sticky;top:112px}
+.req__pitch h1{font-size:48px;line-height:1.06;letter-spacing:-.02em;font-weight:700;
+  color:var(--color-ink);margin:12px 0 20px;max-width:15ch}
+.req__pitch .lead{font-size:18px;max-width:48ch;margin:0 0 40px}
+
+/* Parcours en étapes verticales reliées */
+.flow{counter-reset:f;list-style:none;margin:0;padding:0}
+.flow li{position:relative;padding:0 0 26px 48px}
+.flow li:last-child{padding-bottom:0}
+.flow li::before{content:counter(f);counter-increment:f;position:absolute;left:0;top:0;
+  width:28px;height:28px;border-radius:var(--radius-sm);background:var(--color-white);
+  color:var(--color-petrol);border:1px solid var(--color-line-strong);
+  font-family:var(--font-display);font-weight:600;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.flow li::after{content:"";position:absolute;left:13.5px;top:34px;bottom:4px;width:1px;background:var(--color-line)}
+.flow li:last-child::after{display:none}
+.flow h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--color-ink);margin:3px 0 4px;letter-spacing:-.01em}
+.flow p{font-size:14.5px;line-height:1.55;color:var(--color-gray);margin:0;max-width:42ch}
+
+/* Carte formulaire : filet de 1px, pas d'ombre portée */
+.req-form{background:var(--color-white);border:1px solid var(--color-line-strong);
+  border-radius:var(--radius-xl);padding:32px;text-align:left}
+.req-form__title{font-family:var(--font-display);font-size:21px;font-weight:700;
+  color:var(--color-ink);margin:0 0 6px;letter-spacing:-.01em}
+.req-form__sub{font-size:14px;color:var(--color-gray);margin:0 0 22px}
+.req-form fieldset{border:none;border-top:1px solid var(--color-line);padding:18px 0 4px;margin:0}
+.req-form legend{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--color-green);padding-right:10px}
+.req-form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.req-form .field{margin-bottom:16px}
+.req-form label{display:block;font-family:var(--font-display);font-weight:600;
+  font-size:13px;color:var(--color-ink);margin-bottom:6px}
+.req-form input,.req-form select,.req-form textarea{
+  width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;
+  color:var(--color-ink);background:var(--color-paper);
+  border:1px solid var(--color-line-strong);border-radius:var(--radius-md);padding:11px 13px;
+  transition:border-color var(--ease),background var(--ease)}
+.req-form select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--color-gray) 50%),linear-gradient(135deg,var(--color-gray) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.req-form input::placeholder,.req-form textarea::placeholder{color:#9aa6ab}
+.req-form input:hover,.req-form select:hover,.req-form textarea:hover{border-color:var(--color-gray)}
+.req-form input:focus,.req-form select:focus,.req-form textarea:focus{
+  outline:none;border-color:var(--color-green);background-color:var(--color-white)}
+.req-form textarea{min-height:100px;resize:vertical}
+.req-form button{width:100%;font-family:var(--font-display);font-weight:600;font-size:15px;
+  color:var(--color-white);background:var(--color-green);border:none;cursor:pointer;
+  height:48px;border-radius:var(--radius-md);margin-top:8px;transition:background var(--ease)}
+.req-form button:hover{background:var(--color-green-deep)}
+.req-form button:focus-visible{outline:2px solid var(--color-green);outline-offset:3px}
+.req-form .form-note{font-size:12.5px;line-height:1.5;color:var(--color-gray);margin:14px 0 0;text-align:center}
+/* Champ piège anti-spam : hors écran */
+.req-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Prérequis */
+.req-item{text-align:left}
+.req-item__ic{display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:var(--radius-md);background:var(--color-green-pale);
+  border:1px solid rgba(53,154,102,.2);color:var(--color-green);margin-bottom:16px}
+.req-item h3{font-size:16.5px;font-weight:700;margin:0 0 6px;color:var(--color-ink)}
+.req-item p{font-size:14.5px;line-height:1.55;color:var(--color-gray);margin:0}
+.req-item a{color:var(--color-green-deep);font-weight:600;text-decoration:none}
+.req-item a:hover{text-decoration:underline}
+
+/* Case newsletter */
+.nl-check{display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  font-size:13.5px;line-height:1.5;color:var(--color-gray);margin:6px 0 8px}
+.nl-check input{width:18px;height:18px;margin:1px 0 0;flex:none;
+  accent-color:var(--color-green);cursor:pointer}
+
+/* Pop-up d'avertissement newsletter */
+.nl-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(28,39,45,.55);backdrop-filter:blur(3px)}
+.nl-modal[hidden]{display:none}
+.nl-modal__card{background:var(--color-white);border:1px solid var(--color-line-strong);border-radius:var(--radius-xl);
+  max-width:430px;width:100%;padding:28px;text-align:center;animation:nlpop .18s ease}
+@keyframes nlpop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+.nl-modal__card h3{font-family:var(--font-display);font-size:19px;font-weight:700;
+  color:var(--color-ink);margin:0 0 12px}
+.nl-modal__card p{font-size:14.5px;line-height:1.6;color:var(--color-gray);margin:0 0 24px}
+.nl-modal__actions{display:flex;flex-direction:column;gap:10px}
+.nl-modal__actions button{font-family:var(--font-display);font-weight:600;font-size:14px;
+  cursor:pointer;height:44px;border-radius:var(--radius-md);border:1px solid transparent;
+  transition:background var(--ease),border-color var(--ease),color var(--ease)}
+.nl-modal__actions button[data-nl="keep"]{background:var(--color-green);color:#fff}
+.nl-modal__actions button[data-nl="keep"]:hover{background:var(--color-green-deep)}
+.nl-modal__actions button[data-nl="confirm"]{background:transparent;color:var(--color-gray);
+  border-color:var(--color-line-strong)}
+.nl-modal__actions button[data-nl="confirm"]:hover{border-color:var(--color-petrol);color:var(--color-ink)}
+
+@media(max-width:900px){
+  .req{padding:80px 0 64px}
+  .req__grid{grid-template-columns:1fr;gap:48px}
+  .req__pitch{position:static}
+  .req__pitch h1{max-width:none;font-size:38px}
+}
+@media(max-width:680px){.req__pitch h1{font-size:33px}.req-form{padding:22px}}
+@media(max-width:560px){.req-form .row{grid-template-columns:1fr;gap:0}}

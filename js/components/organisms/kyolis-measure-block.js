@@ -28,7 +28,7 @@ class KyolisMeasureBlock extends KyolisElement {
           font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
           color:var(--color-green);margin-bottom:16px}
         .kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--color-green)}
-        h3{font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--color-ink);
+        h3{font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--color-ink);
           margin:0 0 18px;line-height:1.2}
         ::slotted(ul){margin:0;padding:0}
         @media(max-width:820px){

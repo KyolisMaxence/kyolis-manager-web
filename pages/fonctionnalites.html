@@ -20,10 +20,10 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:64px">
+<section class="section" style="padding-top:24px">
   <div class="wrap">
 
-    <kyolis-feature-block icon="search" kicker="Administration et découverte" heading="Détectez et organisez vos switches automatiquement" shot="Capture : scan réseau et arborescence" data-reveal>
+    <kyolis-feature-block icon="search" kicker="Administration et découverte" heading="Détectez et organisez vos switches automatiquement" view="parc" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">L'application scanne le réseau et reconnaît vos équipements KYOLIS.</p>
       <ul class="check-list">
         <li>Détection des <b>nouveaux équipements</b>, des équipements disparus, des changements et conflits d'adresse IP.</li>
@@ -32,7 +32,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="download" kicker="Firmware et cycle de vie" heading="Gardez vos équipements à jour" shot="Capture : firmware et cycle de vie" flip data-reveal>
+    <kyolis-feature-block icon="download" kicker="Firmware et cycle de vie" heading="Gardez vos équipements à jour" view="firmware" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Le suivi des mises à jour et de la fin de vie matérielle, modèle par modèle.</p>
       <ul class="check-list">
         <li><b>Détection des mises à jour de firmware</b> disponibles.</li>
@@ -40,7 +40,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="gear" kicker="Maintenance courante" heading="Les actions courantes, sans ligne de commande" shot="Capture : actions de maintenance et exports" data-reveal>
+    <kyolis-feature-block icon="gear" kicker="Maintenance courante" heading="Les actions courantes, sans ligne de commande" view="maintenance" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Les opérations de maintenance les plus fréquentes, lancées sur un switch ou sur tous.</p>
       <ul class="check-list">
         <li><b>Renommer, changer le mot de passe, allumer, éteindre et redémarrer</b> un switch.</li>
@@ -49,7 +49,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="doc" kicker="Journalisation syslog" heading="Centralisez les logs de vos équipements" shot="Capture : réception syslog en direct" flip data-reveal>
+    <kyolis-feature-block icon="doc" kicker="Journalisation syslog" heading="Centralisez les logs de vos équipements" view="syslog" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Réception directe des journaux et campagnes d'enregistrement de longue durée.</p>
       <ul class="check-list">
         <li><b>Réception des logs syslog en direct.</b></li>
@@ -57,7 +57,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="pulse" kicker="Monitoring temps réel" heading="Surveillez l'état de chaque port en direct" shot="Capture : monitoring des ports et PoE" data-reveal>
+    <kyolis-feature-block icon="pulse" kicker="Monitoring temps réel" heading="Surveillez l'état de chaque port en direct" view="ports" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Une vue claire de l'activité réseau, jusqu'à la puissance optique et l'alimentation PoE.</p>
       <ul class="check-list">
         <li><b>État des ports en temps réel</b> : lien, vitesse, duplex, statistiques.</li>
@@ -67,7 +67,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="share" kicker="Accès direct à la configuration" heading="Du problème repéré à l'écran qui le règle" shot="Capture : ouverture du switch en web ou en SSH/Telnet" flip data-reveal>
+    <kyolis-feature-block icon="share" kicker="Accès direct à la configuration" heading="Du problème repéré à l'écran qui le règle" view="acces" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">KYOLIS Manager observe et diagnostique ; pour la configuration fine, il vous mène au bon endroit sans détour.</p>
       <ul class="check-list">
         <li><b>VLAN, ports, adressage IP</b> : ouverture directe du switch concerné, l'app ne s'y substitue pas.</li>
@@ -76,7 +76,7 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="share" kicker="Partage sécurisé" heading="Transférez un réseau sans exposer les identifiants" shot="Capture : partage chiffré .kyolis-share" data-reveal>
+    <kyolis-feature-block icon="share" kicker="Partage sécurisé" heading="Transférez un réseau sans exposer les identifiants" view="partage" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Un format chiffré pour partager des réseaux et leurs accès entre postes, en toute sécurité.</p>
       <ul class="check-list">
         <li>Format <b>.kyolis-share chiffré</b> (chiffrement age, par mot de passe).</li>
@@ -87,12 +87,14 @@
   </div>
 </section>
 
-<section class="section section--paper center">
+<section class="section section--paper cta-band">
   <div class="wrap narrow" data-reveal>
     <h2>La sécurité derrière chaque fonction</h2>
-    <p class="lead" style="margin-bottom:36px">Toutes ces fonctionnalités reposent sur un socle de sécurité aligné sur NIS2, CRA et ISO 27001.</p>
-    <kyolis-button href="securite.html">Découvrir la sécurité</kyolis-button>
-    <kyolis-button href="telechargement.html" variant="ghost">Obtenir l'application</kyolis-button>
+    <p class="lead">Toutes ces fonctionnalités reposent sur un socle de sécurité aligné sur NIS2, CRA et ISO 27001.</p>
+    <div class="cta-band__actions">
+      <kyolis-button href="securite.html">Découvrir la sécurité</kyolis-button>
+      <kyolis-button href="demande-acces.html" variant="ghost">Obtenir l'application</kyolis-button>
+    </div>
   </div>
 </section>
 

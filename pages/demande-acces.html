@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Obtenir l'application — KYOLIS Manager</title>
+<meta name="description" content="KYOLIS Manager est accessible sur demande. Remplissez le formulaire, l'équipe KYOLIS échange avec vous puis vous envoie un accès personnel.">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/shared.css">
-<link rel="stylesheet" href="../css/pages/telechargement.css">
+<link rel="stylesheet" href="../css/pages/demande-acces.css">
 </head>
 <body>
 
-<kyolis-header active="telechargement"></kyolis-header>
+<kyolis-header active="demande"></kyolis-header>
 
 <section class="req">
   <div class="wrap req__grid">
 
-    <div class="req__pitch" data-reveal>
+    <div class="req__pitch">
       <div class="eyebrow">Obtenir l'application</div>
       <h1>Obtenez KYOLIS Manager.</h1>
       <p class="lead">Chez KYOLIS, pas de téléchargement anonyme. Nous faisons connaissance, nous échangeons sur vos besoins, et notre équipe vous accompagne pour une prise en main rapide. Avec nous, vous n'êtes jamais seul face à l'outil.</p>
@@ -38,30 +39,66 @@
 
     <!-- Phase 1 : maquette du formulaire. L'action, la vérification e-mail et le captcha
          seront branchés en Phase 2 (PHP/MySQL + captcha côté OVH). -->
-    <form class="req-form" action="#" method="post" data-reveal>
+    <form class="req-form" action="#" method="post">
       <h2 class="req-form__title">Votre demande</h2>
-      <div class="field">
-        <label for="nom">Nom et prénom</label>
-        <input type="text" id="nom" name="nom" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="email">E-mail professionnel</label>
-        <input type="email" id="email" name="email" autocomplete="email" required>
-      </div>
-      <div class="row">
-        <div class="field">
-          <label for="societe">Société</label>
-          <input type="text" id="societe" name="societe" autocomplete="organization" required>
+      <p class="req-form__sub">Une demande correspond à un poste. Pour équiper plusieurs collègues, précisez-le dans votre message.</p>
+
+      <fieldset>
+        <legend>Vous</legend>
+        <div class="row">
+          <div class="field">
+            <label for="nom">Nom et prénom</label>
+            <input type="text" id="nom" name="nom" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="fonction">Fonction</label>
+            <input type="text" id="fonction" name="fonction" autocomplete="organization-title" placeholder="Ex. responsable informatique" required>
+          </div>
         </div>
         <div class="field">
-          <label for="tel">Téléphone</label>
-          <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+          <label for="email">E-mail professionnel</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
         </div>
-      </div>
-      <div class="field">
-        <label for="message">Votre besoin</label>
-        <textarea id="message" name="message" required placeholder="Quelques mots sur votre réseau et ce que vous cherchez à faire."></textarea>
-      </div>
+        <div class="row">
+          <div class="field">
+            <label for="societe">Société</label>
+            <input type="text" id="societe" name="societe" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Votre réseau</legend>
+        <div class="row">
+          <div class="field">
+            <label for="equipe">Déjà équipé KYOLIS ?</label>
+            <select id="equipe" name="equipe" required>
+              <option value="" disabled selected>Choisir</option>
+              <option value="oui">Oui, déjà équipé</option>
+              <option value="projet">En projet</option>
+              <option value="non">Non</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="parc">Nombre de switches</label>
+            <select id="parc" name="parc" required>
+              <option value="" disabled selected>Choisir</option>
+              <option value="1-5">1 à 5</option>
+              <option value="6-20">6 à 20</option>
+              <option value="21-50">21 à 50</option>
+              <option value="50+">Plus de 50</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Votre besoin</label>
+          <textarea id="message" name="message" required placeholder="Quelques mots sur votre réseau et ce que vous cherchez à faire."></textarea>
+        </div>
+      </fieldset>
 
       <label class="nl-check">
         <input type="checkbox" id="newsletter" name="newsletter" checked>
@@ -89,9 +126,9 @@
       <h2>Prérequis</h2>
     </div>
     <div class="grid-3">
-      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="switch" size="26"></kyolis-icon></span><h3>Windows</h3><p>Application native Windows. Une version multiplateforme est planifiée.</p></div>
-      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="26"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/en-savoir-plus-sur-windows-hello-et-le-configurer-dae28983-8242-bb2a-d3d1-87c9d265a5f0" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
-      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="offline" size="26"></kyolis-icon></span><h3>Aucune connexion requise</h3><p>L'usage courant ne dépend pas d'Internet. Idéal pour les sites isolés.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="switch" size="24"></kyolis-icon></span><h3>Windows</h3><p>Application native Windows. Une version multiplateforme est planifiée.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="24"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/en-savoir-plus-sur-windows-hello-et-le-configurer-dae28983-8242-bb2a-d3d1-87c9d265a5f0" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="offline" size="24"></kyolis-icon></span><h3>Aucune connexion requise</h3><p>L'usage courant ne dépend pas d'Internet. Idéal pour les sites isolés.</p></div>
     </div>
   </div>
 </section>

@@ -32,7 +32,12 @@ class KyolisBadge extends KyolisElement {
         /* ref */
         .ref{color:var(--color-petrol);font-size:13px;letter-spacing:.05em;
           background:var(--color-white);border:1px solid var(--color-line);
-          border-radius:var(--radius-pill);padding:10px 22px;text-transform:none}
+          border-radius:var(--radius-md);padding:8px 16px;text-transform:none}
+        /* soft : étiquette discrète (canal de version, statut) */
+        .soft{color:var(--color-green-deep);background:var(--color-green-pale);font-size:11px;
+          border:1px solid rgba(53,154,102,.25);border-radius:var(--radius-xs);padding:3px 8px}
+        .muted{color:var(--color-petrol);background:var(--color-mist);font-size:11px;
+          border:1px solid var(--color-line);border-radius:var(--radius-xs);padding:3px 8px}
       `,
       html: `<span class="badge ${tone}"><slot></slot></span>`,
     };

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes de version — KYOLIS Manager</title>
+<meta name="description" content="Toutes les versions de KYOLIS Manager, stables et bêta, avec leurs nouveautés, leurs apports de sécurité et leur empreinte SHA-256.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/shared.css">
+<link rel="stylesheet" href="../css/pages/versions.css">
+</head>
+<body>
+
+<kyolis-header active="versions"></kyolis-header>
+
+<section class="hero-lite">
+  <div class="wrap">
+    <div class="eyebrow">Notes de version</div>
+    <h1>Chaque version, <em>en toute transparence.</em></h1>
+    <p class="lead">Les nouveautés version après version, les apports de sécurité mis en avant et l'empreinte de chaque fichier publiée. Les versions bêta permettent aux clients volontaires de tester les nouveautés en avant-première.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <kyolis-release-list src="../data/releases.json"></kyolis-release-list>
+  </div>
+</section>
+
+<!-- VÉRIFIER UN FICHIER -->
+<section class="section section--paper" id="verifier">
+  <div class="wrap verify">
+    <div data-reveal>
+      <div class="eyebrow">Intégrité</div>
+      <h2>Vérifiez le fichier reçu</h2>
+      <p class="lead">Avant d'installer, comparez l'empreinte SHA-256 de votre fichier avec celle publiée ci-dessus. Si elles sont identiques, le fichier n'a pas été modifié.</p>
+      <p class="note">La signature de l'installateur par certificat à validation étendue est prévue. D'ici là, Windows peut afficher un avertissement au premier lancement.</p>
+    </div>
+    <div class="term" data-reveal>
+      <div class="term__bar">PowerShell</div>
+      <pre><code><span class="term__prompt">PS&gt;</span> Get-FileHash .\KYOLIS-Manager-Setup.exe -Algorithm SHA256</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-band">
+  <div class="wrap" data-reveal>
+    <h2>Être prévenu de chaque version</h2>
+    <p class="lead">Les clients équipés reçoivent un lien personnel à chaque nouvelle version. Inscrivez-vous aussi à la newsletter pour les avis de sécurité.</p>
+    <div class="cta-band__actions">
+      <kyolis-button href="demande-acces.html">Obtenir l'application</kyolis-button>
+      <kyolis-button href="ressources.html#newsletter" variant="ghost">S'inscrire à la newsletter</kyolis-button>
+    </div>
+  </div>
+</section>
+
+<kyolis-footer></kyolis-footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

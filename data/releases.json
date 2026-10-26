@@ -1,0 +1,38 @@
+{
+  "_comment": "Source unique des versions publiées. Publier une version = ajouter une entrée en tête. channel : stable | beta. date au format AAAA-MM-JJ. Laisser null ce qui n'est pas encore connu (affiché comme « à compléter »).",
+  "releases": [
+    {
+      "version": "1.0.0",
+      "channel": "stable",
+      "date": null,
+      "size": null,
+      "sha256": null,
+      "title": "Première version",
+      "summary": "L'administration complète des switches KYOLIS, sécurisée dès la conception.",
+      "sections": [
+        {
+          "heading": "Fonctionnalités",
+          "items": [
+            "Découverte automatique du réseau et reconnaissance des switches KYOLIS.",
+            "Monitoring temps réel des ports : lien, vitesse, statistiques, PoE et modules SFP.",
+            "Maintenance courante : renommer, changer le mot de passe, allumer, éteindre et redémarrer un switch.",
+            "Upload et download de configuration, sauvegarde réseau, exports CSV.",
+            "Journalisation syslog en direct et campagnes d'enregistrement.",
+            "Détection des mises à jour de firmware et suivi du cycle de vie.",
+            "Partage chiffré de réseaux au format .kyolis-share.",
+            "Accès direct au switch en interface web ou en SSH/Telnet."
+          ]
+        },
+        {
+          "heading": "Sécurité",
+          "items": [
+            "Double authentification Windows Hello et FIDO2, hachage Argon2id.",
+            "Chiffrement au repos de toutes les données, protégé par DPAPI Windows.",
+            "Journal d'audit inviolable, conservé six mois.",
+            "Nomenclature SBOM CycloneDX et analyse de vulnérabilités."
+          ]
+        }
+      ]
+    }
+  ]
+}
