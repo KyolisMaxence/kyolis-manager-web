@@ -1,0 +1,107 @@
+/* =====================================================================
+   Page « Obtenir l'application » — layouts propres (light DOM).
+   ===================================================================== */
+
+/* En-tête : deux colonnes (argumentaire + formulaire).
+   padding-top aligné sur .hero-lite (120px) pour la cohérence inter-pages. */
+.req{padding:120px 0 64px;
+  background:radial-gradient(60% 50% at 50% 0%, var(--color-green-pale) 0%, rgba(241,248,244,0) 70%)}
+.req__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.req__pitch h1{font-size:46px;line-height:1.06;letter-spacing:-.5px;font-weight:900;
+  color:var(--color-ink);margin:14px 0 22px;max-width:15ch}
+.req__pitch h1 em{font-style:normal;color:var(--color-green)}
+.req__pitch .lead{font-size:18px;line-height:1.6;color:var(--color-gray);max-width:48ch;margin:0 0 44px}
+
+/* Parcours en étapes verticales reliées, version légère */
+.flow{counter-reset:f;list-style:none;margin:0;padding:0}
+.flow li{position:relative;padding:0 0 30px 56px}
+.flow li:last-child{padding-bottom:0}
+.flow li::before{content:counter(f);counter-increment:f;position:absolute;left:0;top:-3px;
+  width:36px;height:36px;border-radius:50%;background:var(--color-green-pale);
+  color:var(--color-green-deep);border:1px solid rgba(53,154,102,.28);
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center}
+.flow li::after{content:"";position:absolute;left:17.5px;top:40px;bottom:2px;width:1px;
+  background:var(--color-line)}
+.flow li:last-child::after{display:none}
+.flow h3{font-family:var(--font-display);font-size:16.5px;font-weight:700;color:var(--color-ink);margin:3px 0 5px}
+.flow p{font-size:14.5px;line-height:1.55;color:var(--color-gray);margin:0;max-width:42ch}
+
+/* Carte formulaire, look moderne (bordure légère, ombre diffuse) */
+.req-form{background:var(--color-white);border:1px solid var(--color-line);
+  border-radius:24px;padding:38px;text-align:left;
+  box-shadow:0 1px 3px rgba(40,60,70,.05), 0 22px 50px -26px rgba(40,60,70,.28)}
+.req-form__title{font-family:var(--font-display);font-size:21px;font-weight:800;
+  color:var(--color-ink);margin:0 0 24px;letter-spacing:-.2px}
+.req-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.req-form .field{margin-bottom:18px}
+.req-form label{display:block;font-family:var(--font-display);font-weight:600;
+  font-size:13px;color:var(--color-ink);margin-bottom:8px}
+.req-form input,.req-form select,.req-form textarea{
+  width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;
+  color:var(--color-ink);background:var(--color-white);
+  border:1px solid var(--color-line);border-radius:12px;padding:13px 15px;
+  transition:border-color var(--ease),box-shadow var(--ease)}
+.req-form input::placeholder,.req-form textarea::placeholder{color:#aab4b8}
+.req-form input:hover,.req-form select:hover,.req-form textarea:hover{border-color:#cdd6d6}
+.req-form input:focus,.req-form select:focus,.req-form textarea:focus{
+  outline:none;border-color:var(--color-green);box-shadow:0 0 0 4px rgba(53,154,102,.13)}
+.req-form textarea{min-height:104px;resize:vertical}
+.req-form button{width:100%;font-family:var(--font-display);font-weight:700;font-size:15px;
+  letter-spacing:.01em;color:var(--color-white);background:var(--color-green);border:none;cursor:pointer;
+  padding:16px;border-radius:var(--radius-pill);margin-top:6px;
+  box-shadow:0 10px 24px -10px rgba(53,154,102,.6);
+  transition:background var(--ease),transform var(--ease),box-shadow var(--ease)}
+.req-form button:hover{background:var(--color-green-deep);transform:translateY(-2px);
+  box-shadow:0 14px 30px -10px rgba(53,154,102,.7)}
+.req-form button:focus-visible{outline:3px solid var(--color-green);outline-offset:3px}
+.req-form .form-note{font-size:12.5px;line-height:1.5;color:var(--color-gray);margin:16px 0 0;text-align:center}
+/* Champ piège anti-spam : hors écran */
+.req-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Prérequis, cartes modernisées (icône dans une pastille douce) */
+.req-item{background:var(--color-white);border:1px solid var(--color-line);
+  border-radius:20px;padding:30px 28px;text-align:left;transition:transform var(--ease),box-shadow var(--ease)}
+.req-item:hover{transform:translateY(-3px);box-shadow:0 20px 40px -28px rgba(40,60,70,.4)}
+.req-item__ic{display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;border-radius:14px;background:var(--color-green-pale);
+  color:var(--color-green);margin-bottom:18px}
+.req-item h3{font-size:16.5px;font-weight:700;margin:0 0 7px;color:var(--color-ink)}
+.req-item p{font-size:14.5px;line-height:1.55;color:var(--color-gray);margin:0}
+.req-item a{color:var(--color-green-deep);font-weight:600;text-decoration:none}
+.req-item a:hover{text-decoration:underline}
+
+/* Case newsletter */
+.nl-check{display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  font-size:13.5px;line-height:1.5;color:var(--color-gray);margin:2px 0 8px}
+.nl-check input{width:18px;height:18px;margin:1px 0 0;flex:none;
+  accent-color:var(--color-green);cursor:pointer}
+
+/* Pop-up d'avertissement newsletter */
+.nl-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(28,39,45,.55);backdrop-filter:blur(3px)}
+.nl-modal[hidden]{display:none}
+.nl-modal__card{background:var(--color-white);border-radius:22px;max-width:430px;width:100%;
+  padding:32px;text-align:center;box-shadow:0 30px 70px -20px rgba(20,30,35,.5);
+  animation:nlpop .18s ease}
+@keyframes nlpop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.nl-modal__card h3{font-family:var(--font-display);font-size:19px;font-weight:800;
+  color:var(--color-ink);margin:0 0 12px}
+.nl-modal__card p{font-size:14.5px;line-height:1.6;color:var(--color-gray);margin:0 0 26px}
+.nl-modal__actions{display:flex;flex-direction:column;gap:12px}
+.nl-modal__actions button{font-family:var(--font-display);font-weight:700;font-size:14px;
+  cursor:pointer;padding:14px;border-radius:var(--radius-pill);border:none;
+  transition:background var(--ease),border-color var(--ease),color var(--ease)}
+.nl-modal__actions button[data-nl="keep"]{background:var(--color-green);color:#fff}
+.nl-modal__actions button[data-nl="keep"]:hover{background:var(--color-green-deep)}
+.nl-modal__actions button[data-nl="confirm"]{background:transparent;color:var(--color-gray);
+  border:1px solid var(--color-line)}
+.nl-modal__actions button[data-nl="confirm"]:hover{border-color:var(--color-petrol);color:var(--color-ink)}
+
+@media(max-width:900px){
+  .req{padding:96px 0 56px}
+  .req__grid{grid-template-columns:1fr;gap:48px}
+  .req__pitch h1{max-width:none;font-size:38px}
+}
+@media(max-width:680px){.req{padding:80px 0 48px}.req__pitch h1{font-size:34px}}
+@media(max-width:560px){.req-form .row{grid-template-columns:1fr}}

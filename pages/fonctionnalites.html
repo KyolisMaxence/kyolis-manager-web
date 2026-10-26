@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fonctionnalités — KYOLIS Manager</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/shared.css">
+</head>
+<body>
+
+<kyolis-header active="fonctionnalites"></kyolis-header>
+
+<section class="hero-lite">
+  <div class="wrap">
+    <div class="eyebrow">Fonctionnalités</div>
+    <h1>Tout votre parc, <em>d'une seule interface.</em></h1>
+    <p class="lead">Du scan réseau à la mise à jour firmware, KYOLIS Manager couvre l'administration complète de vos switches, sans expertise CLI poussée.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:64px">
+  <div class="wrap">
+
+    <kyolis-feature-block icon="search" kicker="Administration et découverte" heading="Détectez et organisez vos switches automatiquement" shot="Capture : scan réseau et arborescence" data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">L'application scanne le réseau et reconnaît vos équipements KYOLIS.</p>
+      <ul class="check-list">
+        <li>Détection des <b>nouveaux équipements</b>, des équipements disparus, des changements et conflits d'adresse IP.</li>
+        <li>Organisation en <b>arborescence</b> : dossiers, réseaux, switches.</li>
+        <li><b>Reconnaissance des modèles</b> et déduction du nombre de ports d'après la convention de nommage KYOLIS.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="download" kicker="Firmware et cycle de vie" heading="Gardez vos équipements à jour" shot="Capture : firmware et cycle de vie" flip data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Le suivi des mises à jour et de la fin de vie matérielle, modèle par modèle.</p>
+      <ul class="check-list">
+        <li><b>Détection des mises à jour de firmware</b> disponibles.</li>
+        <li><b>Badge de fin de vie ou fin de maintenance</b> par modèle.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="gear" kicker="Maintenance courante" heading="Les actions courantes, sans ligne de commande" shot="Capture : actions de maintenance et exports" data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Les opérations de maintenance les plus fréquentes, lancées sur un switch ou sur tous.</p>
+      <ul class="check-list">
+        <li><b>Renommer, changer le mot de passe, allumer, éteindre et redémarrer</b> un switch.</li>
+        <li><b>Upload et Download de configuration</b>, sauvegarde réseau.</li>
+        <li><b>Export CSV</b> du monitoring et du journal.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="doc" kicker="Journalisation syslog" heading="Centralisez les logs de vos équipements" shot="Capture : réception syslog en direct" flip data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Réception directe des journaux et campagnes d'enregistrement de longue durée.</p>
+      <ul class="check-list">
+        <li><b>Réception des logs syslog en direct.</b></li>
+        <li><b>Campagnes d'enregistrement jusqu'à 14 jours</b>, export ZIP.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="pulse" kicker="Monitoring temps réel" heading="Surveillez l'état de chaque port en direct" shot="Capture : monitoring des ports et PoE" data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Une vue claire de l'activité réseau, jusqu'à la puissance optique et l'alimentation PoE.</p>
+      <ul class="check-list">
+        <li><b>État des ports en temps réel</b> : lien, vitesse, duplex, statistiques.</li>
+        <li><b>Bande passante à la demande.</b></li>
+        <li><b>Lecture des modules optiques SFP</b> en dBm.</li>
+        <li><b>Gestion du PoE</b> par port : activation, désactivation, puissance et classe.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="share" kicker="Accès direct à la configuration" heading="Du problème repéré à l'écran qui le règle" shot="Capture : ouverture du switch en web ou en SSH/Telnet" flip data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">KYOLIS Manager observe et diagnostique ; pour la configuration fine, il vous mène au bon endroit sans détour.</p>
+      <ul class="check-list">
+        <li><b>VLAN, ports, adressage IP</b> : ouverture directe du switch concerné, l'app ne s'y substitue pas.</li>
+        <li><b>Au choix : interface web ou console SSH / Telnet</b> (CLI), pour les adeptes de la ligne de commande.</li>
+        <li><b>Un clic depuis l'anomalie repérée</b>, sans recherche d'adresse ni reconnexion manuelle.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <kyolis-feature-block icon="share" kicker="Partage sécurisé" heading="Transférez un réseau sans exposer les identifiants" shot="Capture : partage chiffré .kyolis-share" data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Un format chiffré pour partager des réseaux et leurs accès entre postes, en toute sécurité.</p>
+      <ul class="check-list">
+        <li>Format <b>.kyolis-share chiffré</b> (chiffrement age, par mot de passe).</li>
+        <li>Transfert des réseaux et de leurs identifiants <b>protégé par une clé de partage</b>.</li>
+      </ul>
+    </kyolis-feature-block>
+
+  </div>
+</section>
+
+<section class="section section--paper center">
+  <div class="wrap narrow" data-reveal>
+    <h2>La sécurité derrière chaque fonction</h2>
+    <p class="lead" style="margin-bottom:36px">Toutes ces fonctionnalités reposent sur un socle de sécurité aligné sur NIS2, CRA et ISO 27001.</p>
+    <kyolis-button href="securite.html">Découvrir la sécurité</kyolis-button>
+    <kyolis-button href="telechargement.html" variant="ghost">Obtenir l'application</kyolis-button>
+  </div>
+</section>
+
+<kyolis-footer></kyolis-footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

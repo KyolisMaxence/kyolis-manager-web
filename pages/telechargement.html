@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obtenir l'application — KYOLIS Manager</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/shared.css">
+<link rel="stylesheet" href="../css/pages/telechargement.css">
+</head>
+<body>
+
+<kyolis-header active="telechargement"></kyolis-header>
+
+<section class="req">
+  <div class="wrap req__grid">
+
+    <div class="req__pitch" data-reveal>
+      <div class="eyebrow">Obtenir l'application</div>
+      <h1>Obtenez KYOLIS Manager.</h1>
+      <p class="lead">Chez KYOLIS, pas de téléchargement anonyme. Nous faisons connaissance, nous échangeons sur vos besoins, et notre équipe vous accompagne pour une prise en main rapide. Avec nous, vous n'êtes jamais seul face à l'outil.</p>
+      <ol class="flow">
+        <li>
+          <h3>Vous faites votre demande</h3>
+          <p>Quelques mots sur vos besoins, deux minutes suffisent.</p>
+        </li>
+        <li>
+          <h3>On échange ensemble</h3>
+          <p>Confirmez votre e-mail, on vous contacte rapidement.</p>
+        </li>
+        <li>
+          <h3>On vous accompagne</h3>
+          <p>Vous recevez un accès personnel à l'application et notre soutien.</p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Phase 1 : maquette du formulaire. L'action, la vérification e-mail et le captcha
+         seront branchés en Phase 2 (PHP/MySQL + captcha côté OVH). -->
+    <form class="req-form" action="#" method="post" data-reveal>
+      <h2 class="req-form__title">Votre demande</h2>
+      <div class="field">
+        <label for="nom">Nom et prénom</label>
+        <input type="text" id="nom" name="nom" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">E-mail professionnel</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="societe">Société</label>
+          <input type="text" id="societe" name="societe" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="tel">Téléphone</label>
+          <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">Votre besoin</label>
+        <textarea id="message" name="message" required placeholder="Quelques mots sur votre réseau et ce que vous cherchez à faire."></textarea>
+      </div>
+
+      <label class="nl-check">
+        <input type="checkbox" id="newsletter" name="newsletter" checked>
+        <span>J'accepte de recevoir la newsletter pour être informé des mises à jour, des nouveautés et des avis de sécurité.</span>
+      </label>
+
+      <!-- Phase 2 : le captcha OVH viendra ici. -->
+
+      <!-- Champ piège anti-spam : invisible, ne pas remplir. -->
+      <div class="hp" aria-hidden="true">
+        <label for="website">Ne pas remplir</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit">Envoyer ma demande</button>
+      <p class="form-note">Après envoi, vous recevrez un e-mail pour confirmer votre adresse. On revient vers vous rapidement.</p>
+    </form>
+
+  </div>
+</section>
+
+<section class="section section--paper">
+  <div class="wrap">
+    <div class="narrow center" data-reveal>
+      <div class="eyebrow">Bon à savoir</div>
+      <h2>Prérequis</h2>
+    </div>
+    <div class="grid-3">
+      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="switch" size="26"></kyolis-icon></span><h3>Windows</h3><p>Application native Windows. Une version multiplateforme est planifiée.</p></div>
+      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="26"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/en-savoir-plus-sur-windows-hello-et-le-configurer-dae28983-8242-bb2a-d3d1-87c9d265a5f0" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
+      <div class="req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="offline" size="26"></kyolis-icon></span><h3>Aucune connexion requise</h3><p>L'usage courant ne dépend pas d'Internet. Idéal pour les sites isolés.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pop-up d'avertissement si l'utilisateur décoche la newsletter -->
+<div class="nl-modal" id="nlModal" hidden>
+  <div class="nl-modal__card" role="alertdialog" aria-modal="true" aria-labelledby="nlTitle" aria-describedby="nlDesc">
+    <h3 id="nlTitle">Vous risquez de manquer des informations</h3>
+    <p id="nlDesc">En décochant cette case, vous ne serez pas informé des mises à jour, des nouvelles fonctionnalités en cours ou ajoutées, ni des avis de sécurité.</p>
+    <div class="nl-modal__actions">
+      <button type="button" data-nl="keep">Rester informé</button>
+      <button type="button" data-nl="confirm">Décocher quand même</button>
+    </div>
+  </div>
+</div>
+
+<kyolis-footer></kyolis-footer>
+
+<script type="module" src="../js/main.js"></script>
+<script>
+  (function () {
+    var cb = document.getElementById('newsletter');
+    var modal = document.getElementById('nlModal');
+    if (!cb || !modal) return;
+    cb.addEventListener('change', function () {
+      if (!cb.checked) modal.hidden = false;
+    });
+    modal.addEventListener('click', function (e) {
+      var act = e.target.getAttribute('data-nl');
+      if (act === 'confirm') { modal.hidden = true; }          // laisse décoché
+      else if (act === 'keep' || e.target === modal) {          // recoche (bouton ou clic en dehors)
+        cb.checked = true; modal.hidden = true;
+      }
+    });
+  })();
+</script>
+</body>
+</html>

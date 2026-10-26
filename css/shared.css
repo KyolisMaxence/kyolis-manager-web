@@ -1,0 +1,42 @@
+/* =====================================================================
+   Utilitaires partagés entre plusieurs pages (light DOM).
+   Motifs récurrents qui ne méritent pas un composant mais sont réutilisés.
+   ===================================================================== */
+
+/* Placeholder de capture honnête (accueil, fonctionnalités) */
+.shot{
+  background:repeating-linear-gradient(45deg,var(--color-mist),var(--color-mist) 12px,var(--color-paper) 12px,var(--color-paper) 24px);
+  border:1px dashed var(--color-line);border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;color:var(--color-gray);
+  font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;
+  text-transform:uppercase;min-height:320px;text-align:center;padding:24px;
+}
+
+/* Liste à puce verte "check", utilisée dans les slots des blocs mesure
+   et fonctionnalité. ::slotted ne stylant pas les descendants, ces règles
+   vivent en light DOM (le <ul> est dans la page, projeté dans le slot). */
+.check-list{list-style:none;margin:0;padding:0}
+.check-list li{position:relative;padding-left:26px;margin-bottom:14px;color:#3c4a50;font-size:16px}
+.check-list li::before{
+  content:"";position:absolute;left:0;top:9px;width:13px;height:7px;
+  border-left:2px solid var(--color-green);border-bottom:2px solid var(--color-green);
+  transform:rotate(-45deg);
+}
+.check-list li b{color:var(--color-ink)}
+
+/* Note encadrée discrète (feuille de route, mises à jour) */
+.note{font-size:15px;color:var(--color-gray);border-left:3px solid var(--color-mist);
+  padding-left:18px;margin:18px auto 0;max-width:60ch}
+
+/* Grille de cartes générique 3 colonnes */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:64px}
+@media(max-width:860px){.grid-3{grid-template-columns:1fr}}
+
+/* Hero clair centré, réutilisé par plusieurs pages secondaires */
+.hero-lite{padding:120px 0 72px;text-align:center;
+  background:radial-gradient(60% 50% at 50% 0%, var(--color-green-pale) 0%, rgba(241,248,244,0) 70%)}
+.hero-lite h1{font-size:var(--h1);line-height:1.05;margin:0 auto 24px;max-width:18ch;font-weight:900}
+.hero-lite h1 em{font-style:normal;color:var(--color-green)}
+.hero-lite .lead{max-width:60ch;margin:0 auto}
+.hero-lite .refs{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:44px}
+@media(max-width:680px){.hero-lite{padding:80px 0 56px}.hero-lite h1{font-size:36px}}

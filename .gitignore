@@ -1,0 +1,22 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers temporaires
+*.log
+*.tmp
+
+# Node (si jamais utilisé plus tard)
+node_modules/
+package-lock.json
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
