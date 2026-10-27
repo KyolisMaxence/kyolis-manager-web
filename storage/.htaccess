@@ -1,0 +1,3 @@
+# Données locales (base SQLite de test, e-mails de test, installateur) : jamais servies.
+# En production OVH, placer ces fichiers hors du dossier www.
+Require all denied

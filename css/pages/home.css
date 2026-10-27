@@ -6,7 +6,7 @@
 
 /* Hero sombre. L'en-tête sombre est collant : on remonte le héros
    dessous pour une continuité totale. */
-.hero{position:relative;overflow:hidden;margin-top:-65px;padding:168px 0 0;text-align:center}
+.hero{position:relative;overflow:hidden;margin-top:-77px;padding:180px 0 0;text-align:center}
 .hero .wrap{position:relative}
 .hero__text{max-width:860px;margin:0 auto}
 .hero__title{font-size:var(--h1);line-height:1.05;margin-bottom:22px;font-weight:700}

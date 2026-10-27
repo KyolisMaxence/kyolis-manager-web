@@ -20,3 +20,13 @@ package-lock.json
 # Fichiers de sauvegarde
 *.bak
 *.backup
+
+# Captures originales de l'app (données non floutées) : ne pas publier.
+# Les versions publiables sont dans assets/img/app/ (tools/masquer-captures.py).
+assets/img/captures/
+
+# Parcours « accès sur demande » : configuration (clés, mots de passe) et
+# données locales (base de test, e-mails de test, installateur).
+api/config.php
+storage/*
+!storage/.htaccess

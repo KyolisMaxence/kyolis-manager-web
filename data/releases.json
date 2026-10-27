@@ -1,9 +1,8 @@
 {
-  "_comment": "Source unique des versions publiées. Publier une version = ajouter une entrée en tête. channel : stable | beta. date au format AAAA-MM-JJ. Laisser null ce qui n'est pas encore connu (affiché comme « à compléter »).",
+  "_comment": "Source unique des versions publiées. Publier une version = ajouter une entrée en tête (la première est affichée comme « Version actuelle »). date au format AAAA-MM-JJ. Laisser null ce qui n'est pas encore connu (affiché comme « à compléter »).",
   "releases": [
     {
       "version": "1.0.0",
-      "channel": "stable",
       "date": null,
       "size": null,
       "sha256": null,

@@ -24,6 +24,7 @@ const ICONS = {
   cube:     '<path d="M24 4l16 9v18l-16 9-16-9V13z"/><path d="M8 13l16 9 16-9M24 22v18"/>',
   mail:     '<rect x="6" y="10" width="36" height="28" rx="3"/><path d="M6 13l18 13 18-13"/>',
   refresh:  '<path d="M42 24a18 18 0 1 1-5-12.6"/><path d="M42 6v8h-8"/>',
+  map:      '<path d="M6 12l12-6 12 6 12-6v30l-12 6-12-6-12 6z"/><path d="M18 6v30M30 12v30"/>',
 };
 
 class KyolisIcon extends KyolisElement {

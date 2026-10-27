@@ -18,7 +18,10 @@ class KyolisPosture extends KyolisElement {
         .section{padding:${dark ? '124px' : 'var(--space-13)'} 0;text-align:center;position:relative;overflow:hidden}
         .section.dark{background:var(--color-petrol-darker);color:var(--color-white)}
         .halo{position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%, rgba(53,154,102,.16) 0%, rgba(53,154,102,0) 70%)}
-        .wrap{position:relative;max-width:760px;margin:0 auto;padding:0 var(--space-4)}
+        /* Colonne centrée : les paragraphes en slot gardent les marges de base.css
+           (qui priment sur ::slotted), d'où le centrage par flex plutôt que par margin:auto */
+        .wrap{position:relative;max-width:760px;margin:0 auto;padding:0 var(--space-4);
+          display:flex;flex-direction:column;align-items:center}
         .eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
           letter-spacing:.18em;font-size:var(--text-xs);margin-bottom:var(--space-2);
           color:${dark ? 'var(--color-green-soft)' : 'var(--color-green)'}}

@@ -29,8 +29,11 @@ class KyolisButton extends KyolisElement {
         }
         :host([full]) a{display:flex;width:100%}
         a:focus-visible{outline:2px solid var(--color-green);outline-offset:3px}
-        .green{background:var(--color-green);color:var(--color-white)}
-        .green:hover{background:var(--color-green-deep)}
+        /* Vert au repos, dégradé signature en fondu au survol */
+        .green{position:relative;isolation:isolate;overflow:hidden;background:var(--color-green);color:var(--color-white)}
+        .green::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--gradient-green-kyolis);
+          opacity:0;transition:opacity var(--ease)}
+        .green:hover::before{opacity:1}
         .ghost{color:var(--color-ink);border-color:var(--color-line-strong);background:var(--color-white)}
         .ghost:hover{border-color:var(--color-petrol)}
         .ghost-dark{color:var(--dark-text);border-color:var(--dark-line-strong);background:transparent}

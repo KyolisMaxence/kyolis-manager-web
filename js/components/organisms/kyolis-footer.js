@@ -11,9 +11,8 @@ class KyolisFooter extends KyolisElement {
         :host{display:block;background:var(--dark-0);color:#9aa8ae;font-size:14px;border-top:1px solid var(--dark-line)}
         .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--space-4)}
         .top{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:48px;padding:76px 0 52px}
-        .brand{font-family:var(--font-display);font-weight:700;font-size:18px;
-          letter-spacing:.05em;color:#fff;text-decoration:none;display:inline-block;margin-bottom:18px}
-        .brand span{color:#7f9197;font-weight:500}
+        .brand{display:inline-block;margin-bottom:18px}
+        .brand img{height:52px;width:auto;display:block}
         .desc{font-size:14.5px;line-height:1.65;color:#8b999f;max-width:36ch;margin:0}
         h4{font-family:var(--font-display);font-weight:700;font-size:12px;
           text-transform:uppercase;letter-spacing:.13em;color:#cdd7da;margin:0 0 18px}
@@ -35,7 +34,7 @@ class KyolisFooter extends KyolisElement {
         <div class="wrap">
           <div class="top">
             <div class="brand-col">
-              <a class="brand" href="index.html">KYOLIS <span>MANAGER</span></a>
+              <a class="brand" href="index.html" aria-label="KYOLIS Manager, accueil"><img src="../assets/img/logo/manager-horizontal-blanc.svg" alt=""></a>
               <p class="desc">Le logiciel d'administration des switches KYOLIS. Observer, diagnostiquer et sécuriser votre parc, depuis un seul poste, édité par le fabricant.</p>
             </div>
             <div class="col">

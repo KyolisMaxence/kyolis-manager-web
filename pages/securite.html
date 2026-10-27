@@ -61,7 +61,7 @@
       <p class="lead">Chaque point décrit une fonction opérationnelle et active dans la version actuelle. Pas une intention, un mécanisme.</p>
     </div>
 
-    <kyolis-measure-block icon="lock" kicker="Authentification et accès" heading="Entrer dans l'application est aussi sûr que déverrouiller le poste" data-reveal>
+    <kyolis-measure-block icon="lock" src="../assets/img/app/windows-hello-cadre.webp" full="../assets/img/app/windows-hello.webp" inset="../assets/img/app/verrouillage.webp" inset-alt="Session verrouillée après inactivité, reprise avec Windows Hello" kicker="Authentification et accès" heading="Entrer dans l'application est aussi sûr que déverrouiller le poste" data-reveal>
       <ul class="check-list">
         <li><b>Double authentification Windows Hello et FIDO2</b>, obligatoire pour tous les comptes. Clé dans le TPM, résistante au phishing.</li>
         <li><b>Hachage Argon2id</b> aux paramètres recommandés OWASP. Verrouillage après 15 minutes d'inactivité.</li>
@@ -70,7 +70,7 @@
       </ul>
     </kyolis-measure-block>
 
-    <kyolis-measure-block icon="shield" kicker="Chiffrement et données" heading="Un fichier copié ailleurs est illisible" flip data-reveal>
+    <kyolis-measure-block icon="shield" src="../assets/img/app/parametres-securite-cadre.webp" full="../assets/img/app/parametres-securite.webp" kicker="Chiffrement et données" heading="Un fichier copié ailleurs est illisible" flip data-reveal>
       <ul class="check-list">
         <li><b>Chiffrement au repos de toutes les données sensibles</b> : topologie, journaux, identifiants.</li>
         <li><b>Protection par DPAPI Windows</b>, clé liée au compte et à la machine, ce qui neutralise les logiciels voleurs de données.</li>
@@ -78,11 +78,13 @@
       </ul>
     </kyolis-measure-block>
 
-    <kyolis-measure-block icon="doc" kicker="Traçabilité et audit" heading="Chaque action laisse une trace que personne ne peut effacer" data-reveal>
+    <kyolis-measure-block icon="doc" src="../assets/img/app/journal-securite-cadre.webp" full="../assets/img/app/journal-securite.webp" kicker="Traçabilité et audit" heading="Chaque action laisse une trace que personne ne peut effacer" data-reveal>
       <ul class="check-list">
         <li><b>Journal d'audit en ajout seul</b>, inviolable. Consultation, filtres, export, conservation six mois.</li>
         <li><b>Filtrage des secrets</b> dans les journaux applicatifs.</li>
         <li><b>SSH activé par défaut</b>, avertissement explicite en cas de retour à Telnet non chiffré.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Intégrité vérifiée</b> : le journal est chaîné, toute suppression ou modification est détectée.</li>
       </ul>
     </kyolis-measure-block>
   </div>
@@ -93,26 +95,6 @@
   <p>L'application ne modifie jamais automatiquement la configuration de votre réseau. Elle détecte les écarts, vous alerte, vous conseille la correction et trace la décision. L'exécution reste à l'opérateur.</p>
   <p>Un choix assumé : il respecte votre autorité sur votre réseau, assure la traçabilité du risque accepté attendue par NIS2 et ISO 27001, et protège juridiquement le client comme l'éditeur.</p>
 </kyolis-posture>
-
-<!-- FEUILLE DE ROUTE -->
-<section class="section">
-  <div class="wrap">
-    <div class="narrow center" data-reveal>
-      <div class="eyebrow">Notre vision</div>
-      <h2>Sur la feuille de route</h2>
-      <p class="lead">La direction de KYOLIS Manager. Ces fonctions ne sont pas encore disponibles, et aucune date n'est annoncée tant qu'elle n'est pas confirmée.</p>
-      <p class="note">Nous distinguons délibérément ce qui est livré de ce qui est prévu. Une fonction de la feuille de route ne sera jamais présentée comme disponible avant de l'être.</p>
-    </div>
-    <div class="grid-3">
-      <kyolis-road-card heading="Mini SIEM embarqué" feature data-reveal><p>Stockage long terme, corrélation, tableau de bord, alertes et rapports. Pour les PME sans SIEM externe.</p></kyolis-road-card>
-      <kyolis-road-card heading="Vérification du firmware" data-reveal><p>Contrôle cryptographique de l'authenticité du firmware avant installation.</p></kyolis-road-card>
-      <kyolis-road-card heading="Audit NIST et CIS" data-reveal><p>Rapport et commandes prêtes à copier, sans aucune modification automatique du réseau.</p></kyolis-road-card>
-      <kyolis-road-card heading="Transferts SCP et SFTP" data-reveal><p>Blocage de la mise à jour firmware si le réseau est encore en Telnet.</p></kyolis-road-card>
-      <kyolis-road-card heading="Signature de l'installateur" data-reveal><p>Certificat à validation étendue pour garantir l'intégrité de la distribution.</p></kyolis-road-card>
-      <kyolis-road-card heading="Détection de piquage optique" data-reveal><p>Surveillance des tentatives d'écoute physique sur fibre.</p></kyolis-road-card>
-    </div>
-  </div>
-</section>
 
 <!-- TRANSPARENCE -->
 <section class="section section--paper">

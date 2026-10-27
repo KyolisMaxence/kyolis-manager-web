@@ -8,6 +8,7 @@
      heading : titre
      view    : vue de <kyolis-app-shot> à afficher
      src     : vraie capture (remplace la maquette quand elle existe)
+     full    : capture entière, ouverte en grand au clic
      flip    : présent => visuel à droite
    Contenu (intro + liste) en slot.
    ===================================================================== */
@@ -22,6 +23,7 @@ class KyolisFeatureBlock extends KyolisElement {
     const heading = this.getAttribute('heading') || '';
     const view = this.getAttribute('view') || 'parc';
     const src = this.getAttribute('src');
+    const full = this.getAttribute('full');
     const flip = this.hasAttribute('flip');
 
     return {
@@ -46,7 +48,7 @@ class KyolisFeatureBlock extends KyolisElement {
       `,
       html: `
         <div class="block">
-          <div class="visual"><kyolis-app-shot view="${view}"${src ? ` src="${src}" alt="${heading}"` : ''}></kyolis-app-shot></div>
+          <div class="visual"><kyolis-app-shot view="${view}"${src ? ` src="${src}" alt="${heading}"` : ''}${full ? ` full="${full}"` : ''}></kyolis-app-shot></div>
           <div class="text">
             <span class="kicker"><kyolis-icon name="${icon}" size="18"></kyolis-icon>${kicker}</span>
             <h2>${heading}</h2>

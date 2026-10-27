@@ -37,9 +37,10 @@
       </ol>
     </div>
 
-    <!-- Phase 1 : maquette du formulaire. L'action, la vérification e-mail et le captcha
-         seront branchés en Phase 2 (PHP/MySQL + captcha côté OVH). -->
-    <form class="req-form" action="#" method="post">
+    <!-- Envoyé en arrière-plan à api/demande.php (script en bas de page), qui enregistre
+         la demande et envoie l'e-mail de vérification. Anti-robots sans service externe :
+         champ piège, délai minimum de remplissage, limite par adresse IP. -->
+    <form class="req-form" id="reqForm" action="../api/demande.php" method="post">
       <h2 class="req-form__title">Votre demande</h2>
       <p class="req-form__sub">Une demande correspond à un poste. Pour équiper plusieurs collègues, précisez-le dans votre message.</p>
 
@@ -105,13 +106,12 @@
         <span>J'accepte de recevoir la newsletter pour être informé des mises à jour, des nouveautés et des avis de sécurité.</span>
       </label>
 
-      <!-- Phase 2 : le captcha OVH viendra ici. -->
-
       <!-- Champ piège anti-spam : invisible, ne pas remplir. -->
       <div class="hp" aria-hidden="true">
         <label for="website">Ne pas remplir</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <p class="req-form__error" id="reqError" role="alert" hidden></p>
       <button type="submit">Envoyer ma demande</button>
       <p class="form-note">Après envoi, vous recevrez un e-mail pour confirmer votre adresse. On revient vers vous rapidement.</p>
     </form>
@@ -162,6 +162,36 @@
       else if (act === 'keep' || e.target === modal) {          // recoche (bouton ou clic en dehors)
         cb.checked = true; modal.hidden = true;
       }
+    });
+  })();
+
+  /* Envoi de la demande à api/demande.php, sans quitter la page en cas d'erreur.
+     « duree » (temps passé sur le formulaire) sert à écarter les robots. */
+  (function () {
+    var form = document.getElementById('reqForm');
+    var err = document.getElementById('reqError');
+    var btn = form.querySelector('button[type="submit"]');
+    var debut = Date.now();
+    var ECHEC = "L'envoi n'a pas abouti. Vérifiez votre connexion, ou appelez-nous au 04 79 68 76 54.";
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+      var donnees = new FormData(form);
+      donnees.append('duree', String(Date.now() - debut));
+      fetch(form.action, { method: 'POST', body: donnees, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (rep) {
+          if (rep.ok) { window.location.href = 'demande-envoyee.html'; return; }
+          throw new Error(rep.message || ECHEC);
+        })
+        .catch(function (e2) {
+          err.textContent = e2 instanceof SyntaxError ? ECHEC : e2.message;
+          err.hidden = false;
+          btn.disabled = false;
+          btn.textContent = 'Envoyer ma demande';
+        });
     });
   })();
 </script>

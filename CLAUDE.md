@@ -68,16 +68,21 @@ Header et footer sont des organismes uniques (source unique pour toutes les page
   bloc sécurité, « Nos valeurs » / « KYOLIS conseille, vous agissez »).
 - **Fonctionnalités** : retour du patron appliqué (ordre 1‑5‑3‑4‑2‑7‑6 + corrections de contenu).
 - **Sécurité** : page **validée et close**. Badges = NIS2 · CRA · ISO 27001, ANSSI gardé une
-  seule fois dans son rôle, titre « Quatre cadres, une même exigence », mesures/posture/roadmap OK.
+  seule fois dans son rôle, titre « Quatre cadres, une même exigence », mesures/posture OK. Section « Notre vision » (feuille de route) supprimée le 27/10/2026
+  à la demande ; le composant `kyolis-road-card` est gardé, inutilisé, si elle revient.
 - Discours « aligné sur » harmonisé + tirets de prose supprimés.
 
 **Reste à faire :**
 - **Obtenir l'application** (ex-Téléchargement) : Phase 1 faite (page de demande + formulaire +
   pop-up newsletter, design moderne 2 colonnes). Champs : nom, société, e-mail pro, téléphone,
   besoin (tous required) + case newsletter cochée par défaut. Oct. 2026 : fichier renommé
-  `demande-acces.html` (textes validés inchangés). Reste la **Phase 2 back** (PHP/MySQL
-  OVH, captcha OVH, e-mail de vérification, lien d'accès personnel). Lien « Configurer Windows
-  Hello » présent mais **URL Microsoft à vérifier**.
+  `demande-acces.html` (textes validés inchangés). **Phase 2 back faite le 27/10/2026** dans `api/`
+  (PHP 8, MySQL chez OVH, SQLite en local) : demande, e-mail de vérification, alerte équipe,
+  espace équipe `api/equipe.php` (mot de passe) avec fiche, note, Accepter/Refuser, lien personnel
+  7 jours / 3 téléchargements, identifiant de poste créé à l'acceptation (futur code d'activation).
+  Anti-robots sans service externe (choix de l'utilisateur). Testé de bout en bout en local.
+  Mise en ligne : voir `api/INSTALLATION.md`. Local : `python tools/serve-php.py` (PHP installé
+  via winget). Lien « Configurer Windows Hello » présent mais **URL Microsoft à vérifier**.
 - **Ressources** : à réordonner = mettre le **versionnement / changelog de l'app EN TÊTE**, la
   **FAQ ensuite** (pas l'inverse). + SBOM à approfondir. Idée pour plus tard : **page tuto** avec
   vidéos YouTube pour accompagner l'installation.
@@ -94,17 +99,29 @@ Les textes ci-dessous sont nouveaux et doivent passer par les patrons :
 2. **Page de demande** : phrase « Une demande correspond à un poste… », intitulés de groupes
    « Vous » / « Votre réseau », nouveaux champs « Fonction », « Déjà équipé KYOLIS ? »,
    « Nombre de switches » et leurs choix.
-3. **Page `versions.html`** (entière) : titre, intro, onglets Toutes / Stable / Bêta, message
-   « aucune version bêta », bloc « Vérifiez le fichier reçu » (commande PowerShell, mention de
+3. **Page `versions.html`** (entière) : titre, intro, étiquette « Version actuelle » (pas de
+   programme bêta : la 1.0.0 est la version publiée), bloc « Vérifiez le fichier reçu » (commande PowerShell, mention de
    l'avertissement Windows), bloc final « Être prévenu de chaque version ». Le contenu de la
    version 1.0.0 reprend le changelog validé. **Doublon à trancher** : le changelog est aussi
    toujours sur Ressources.
 4. **Accès à `versions.html`** : lien « Notes de version » ajouté dans le pied de page
    uniquement (le menu validé n'a pas été touché). Ajout au menu à décider.
-5. **Maquettes d'app** (`kyolis-app-shot`) : noms de switches, IP, messages syslog, libellés
-   d'interface, mention « Aperçu illustratif ». Données fictives à vérifier avec l'équipe produit.
+5. **Bloc « Cartographie du réseau »** (dernier bloc de Fonctionnalités, nouveauté de l'app) :
+   titre « Voyez comment votre réseau est câblé », intro et 4 puces. Textes alternatifs (alt) des
+   captures : reprennent les titres des blocs.
 6. **Meta descriptions** (Google) de l'accueil, de la page de demande et de `versions.html`.
-7. **Incohérence à signaler** (texte validé, gardé tel quel) : l'appel final de l'accueil dit
+8. **Nouveautés repérées dans l'app** (Doc, partie 4) : 7 lignes ajoutées, marquées
+   `<!-- Ligne nouvelle (Doc, partie 4) -->` (6 sur Fonctionnalités, 1 sur Sécurité « Intégrité
+   vérifiée », à retirer si refusée). Plus le texte alternatif de la capture « Session verrouillée ».
+9. **Textes du parcours d'accès** (`api/lib/mail.php` et pages de `api/`) : les 3 e-mails
+   (vérification, alerte équipe, accès personnel), les pages « Confirmez votre adresse »,
+   « Merci, votre demande est transmise », lien personnel, liens expirés, messages d'erreur
+   du formulaire et « Envoi en cours… ».
+**Partie 2 du Doc tranchée (27/10/2026)** : corrections 1, 3, 4, 5, 6 validées et appliquées
+(bénéfices de l'accueil, appel final « Demandez votre accès… », syslog « export texte », partage
+« clé générée par l'application »). Point 2 (pastille « Tout le parc en un scan ») inchangé.
+Ces textes sont désormais validés.
+7. ~~**Incohérence à signaler**~~ (réglée, voir ci-dessus) (texte validé, gardé tel quel) : l'appel final de l'accueil dit
    « Téléchargez KYOLIS Manager… », alors que l'accès est désormais sur demande.
 
 ## Décisions / changements actés (à implémenter plus tard)
@@ -118,14 +135,26 @@ Les textes ci-dessous sont nouveaux et doivent passer par les patrons :
 
 ## Placeholders à remplacer avant mise en ligne
 
-- Lien **Contacter l'équipe** = `href="#"` (vraie adresse ou page contact à définir).
-- **Captures d'écran** : les maquettes `<kyolis-app-shot>` (mention « Aperçu illustratif ») sont
-  temporaires. Ajouter `src="../assets/img/…"` sur le composant (ou sur `kyolis-feature-block`)
-  pour afficher la vraie capture dans le même cadre.
-- **Menu mobile** : la navigation est masquée sous 920px, pas encore de menu burger.
+- Lien **Contacter l'équipe** : mène à `ressources.html#contact`, où le **téléphone 04 79 68 76 54**
+  est confirmé. L'e-mail `contact@kyolis-manager.com` (le même que dans l'app) est affiché
+  **par avance** (27/10/2026) : la boîte est **à faire créer par l'IT** avant la mise en ligne.
+  Le bouton « Nous contacter » ouvre un e-mail vers cette adresse.
+- **Captures réelles** : originaux dans `assets/img/captures/` (non versionnés, données sensibles),
+  versions floutées publiables dans `assets/img/app/` via `python tools/masquer-captures.py`.
+  Photo SBOM non publiée tant que l'app affiche des paquets vulnérables (correction à la prochaine MAJ).
+- **Captures d'écran** : vraies captures intégrées (oct. 2026) sur l'accueil, Fonctionnalités et
+  Sécurité, via `src` (recadrage `-cadre.webp`) et `full` (image entière, agrandie au clic) sur
+  `kyolis-app-shot`, `kyolis-feature-block` et `kyolis-measure-block`. Les maquettes HTML restent
+  en secours quand `src` est absent.
+- **Menu mobile** : fait (27/10/2026). Sous 920px, bouton à trois traits dans `kyolis-header` qui
+  déroule les liens + « Contacter l'équipe » ; « Obtenir l'application » reste visible dans la barre.
+  Fermeture au clic sur un lien, à côté, ou avec Échap.
 - **Téléchargement** : version, date, taille, lien, **empreinte SHA-256** (ne pas affirmer la
   signature EV tant qu'elle n'existe pas).
-- **Logo footer** : prévoir une version **blanche** (fond sombre).
+- **Logos** : fournis (oct. 2026) dans `assets/img/logo/` (horizontal et vertical, couleur, blanc,
+  noir). En-tête = horizontal couleur (blanc sur le héros sombre), pied de page = horizontal blanc.
+- **Serveur local** : `python tools/serve-php.py` (site + formulaire PHP, sans cache) ;
+  `python tools/serve.py` reste disponible pour le site seul, sans PHP.
 - **Polices** : basculer les Google Fonts en local (souveraineté / CNIL) avant prod.
 - **Mentions légales + RGPD**, newsletter / avis de sécurité, **SBOM** réel (CycloneDX).
 - Pas encore versionné (git) ni déployé. **Hébergement = OVH** (pro, hébergeur français,

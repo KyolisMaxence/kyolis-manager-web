@@ -6,8 +6,10 @@
    Attributs :
      view : "parc" (défaut) | "firmware" | "maintenance" | "syslog"
             | "ports" | "acces" | "partage"
-     src  : chemin d'une vraie capture. Si présent, l'image remplace
-            la maquette (le cadre de fenêtre est conservé).
+     src  : chemin d'une vraie capture (recadrage lisible). Si présent,
+            l'image remplace la maquette ; la capture ayant sa propre barre
+            de titre, la fausse barre n'est pas dessinée.
+     full : capture entière, ouverte en grand au clic (avec src)
      alt  : texte alternatif de la capture (avec src)
    Les données affichées sont fictives : la barre de titre le signale
    par la mention « Aperçu illustratif » tant qu'il n'y a pas de src.
@@ -185,7 +187,7 @@ class KyolisAppShot extends KyolisElement {
     const view = VIEWS[this.getAttribute('view')] ? this.getAttribute('view') : 'parc';
     const src = this.getAttribute('src');
     const alt = this.getAttribute('alt') || '';
-    const content = src ? `<img class="real" src="${src}" alt="${alt}">` : VIEWS[view]();
+    if (src) return this.renderCapture(src, this.getAttribute('full'), alt);
 
     return {
       css: `
@@ -356,17 +358,51 @@ class KyolisAppShot extends KyolisElement {
         }
       `,
       html: `
-        <div class="win" role="img" aria-label="${src ? alt : "Aperçu illustratif de l'interface de KYOLIS Manager"}">
+        <div class="win" role="img" aria-label="Aperçu illustratif de l'interface de KYOLIS Manager">
           <div class="bar">
             <img src="../assets/img/logo.png" alt="">
             <span class="bar__title">KYOLIS Manager</span>
-            ${src ? '' : '<span class="bar__tag">Aperçu illustratif</span>'}
+            <span class="bar__tag">Aperçu illustratif</span>
             <span class="bar__ctrl" aria-hidden="true"><span>─</span><span>☐</span><span>✕</span></span>
           </div>
-          ${content}
+          ${VIEWS[view]()}
         </div>
       `,
     };
+  }
+
+  /* Vraie capture : cadre à filet, agrandissement au clic si "full" */
+  renderCapture(src, full, alt) {
+    return {
+      css: `
+        :host{display:block}
+        .shot{display:block;width:100%;padding:0;margin:0;border:1px solid var(--color-line-strong);
+          border-radius:var(--radius-lg);overflow:hidden;background:var(--color-white);
+          cursor:${full ? 'zoom-in' : 'default'};transition:border-color var(--ease)}
+        .shot:hover{border-color:${full ? 'var(--color-gray)' : 'var(--color-line-strong)'}}
+        .shot:focus-visible{outline:2px solid var(--color-green);outline-offset:3px}
+        .shot img{display:block;width:100%;height:auto}
+        dialog{max-width:min(1600px,96vw);max-height:94vh;padding:0;border:1px solid var(--dark-line-strong);
+          border-radius:var(--radius-lg);background:var(--color-white);overflow:auto}
+        dialog::backdrop{background:rgba(28,39,45,.8)}
+        dialog img{display:block;max-width:100%;height:auto}
+        .close{position:sticky;float:right;top:10px;margin:10px 10px -46px 0;width:36px;height:36px;border-radius:var(--radius-md);
+          border:1px solid var(--color-line-strong);background:var(--color-white);color:var(--color-ink);font-size:16px;cursor:pointer}
+      `,
+      html: full
+        ? `<button class="shot" type="button" aria-label="Agrandir : ${alt}"><img src="${src}" alt="${alt}" loading="lazy"></button>
+           <dialog aria-label="${alt}"><button class="close" type="button" aria-label="Fermer">✕</button><img src="${full}" alt="${alt}"></dialog>`
+        : `<figure class="shot"><img src="${src}" alt="${alt}" loading="lazy"></figure>`,
+    };
+  }
+
+  afterRender() {
+    const dialog = this.shadowRoot.querySelector('dialog');
+    if (!dialog) return;
+    this.shadowRoot.querySelector('.shot').addEventListener('click', () => dialog.showModal());
+    dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+    /* Clic en dehors de l'image : ferme */
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
   }
 }
 

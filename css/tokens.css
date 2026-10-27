@@ -30,6 +30,12 @@
   --color-green-pale:#f1f8f4;
   --color-red:#d32f2f;
 
+  /* Dégradé vert KYOLIS (charte) : survol des boutons principaux (au repos, vert plein) */
+  --gradient-green-kyolis:linear-gradient(to right,
+    #7ec661,   /* vert clair */
+    #47ae60,   /* vert moyen */
+    #22a472);  /* vert foncé */
+
   /* Statut d'avertissement : réservé aux illustrations d'interface
      (comme les accents de Raycast, jamais sur les boutons ni le texte) */
   --color-amber:#e0a030;

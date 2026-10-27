@@ -1,0 +1,7 @@
+# Seuls les points d'entrée PHP sont accessibles depuis le web.
+# La configuration, le code commun et le schéma de base restent privés.
+<FilesMatch "^(config\.php|config\.example\.php|.*\.sql)$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/api/lib/
+Options -Indexes

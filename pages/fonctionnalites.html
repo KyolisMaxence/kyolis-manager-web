@@ -23,24 +23,28 @@
 <section class="section" style="padding-top:24px">
   <div class="wrap">
 
-    <kyolis-feature-block icon="search" kicker="Administration et découverte" heading="Détectez et organisez vos switches automatiquement" view="parc" data-reveal>
+    <kyolis-feature-block icon="search" kicker="Administration et découverte" heading="Détectez et organisez vos switches automatiquement" view="parc" src="../assets/img/app/scan-cadre.webp" full="../assets/img/app/scan.webp" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">L'application scanne le réseau et reconnaît vos équipements KYOLIS.</p>
       <ul class="check-list">
         <li>Détection des <b>nouveaux équipements</b>, des équipements disparus, des changements et conflits d'adresse IP.</li>
         <li>Organisation en <b>arborescence</b> : dossiers, réseaux, switches.</li>
         <li><b>Reconnaissance des modèles</b> et déduction du nombre de ports d'après la convention de nommage KYOLIS.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Alertes visibles dès la liste des réseaux</b> : un réseau qui a une anomalie est signalé sans avoir à l'ouvrir.</li>
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="download" kicker="Firmware et cycle de vie" heading="Gardez vos équipements à jour" view="firmware" flip data-reveal>
+    <kyolis-feature-block icon="download" kicker="Firmware et cycle de vie" heading="Gardez vos équipements à jour" view="firmware" src="../assets/img/app/firmware-lancement-cadre.webp" full="../assets/img/app/firmware-lancement.webp" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Le suivi des mises à jour et de la fin de vie matérielle, modèle par modèle.</p>
       <ul class="check-list">
         <li><b>Détection des mises à jour de firmware</b> disponibles.</li>
         <li><b>Badge de fin de vie ou fin de maintenance</b> par modèle.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>La bonne version proposée</b> : le switch redémarre seul et l'application confirme la mise à jour.</li>
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="gear" kicker="Maintenance courante" heading="Les actions courantes, sans ligne de commande" view="maintenance" data-reveal>
+    <kyolis-feature-block icon="gear" kicker="Maintenance courante" heading="Les actions courantes, sans ligne de commande" view="maintenance" src="../assets/img/app/actions-masse-cadre.webp" full="../assets/img/app/actions-masse.webp" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Les opérations de maintenance les plus fréquentes, lancées sur un switch ou sur tous.</p>
       <ul class="check-list">
         <li><b>Renommer, changer le mot de passe, allumer, éteindre et redémarrer</b> un switch.</li>
@@ -49,38 +53,57 @@
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="doc" kicker="Journalisation syslog" heading="Centralisez les logs de vos équipements" view="syslog" flip data-reveal>
+    <kyolis-feature-block icon="doc" kicker="Journalisation syslog" heading="Centralisez les logs de vos équipements" view="syslog" src="../assets/img/app/syslog-cadre.webp" full="../assets/img/app/syslog.webp" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Réception directe des journaux et campagnes d'enregistrement de longue durée.</p>
       <ul class="check-list">
         <li><b>Réception des logs syslog en direct.</b></li>
-        <li><b>Campagnes d'enregistrement jusqu'à 14 jours</b>, export ZIP.</li>
+        <li><b>Campagnes d'enregistrement jusqu'à 14 jours</b>, export texte.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Filtres par niveau, source et période</b>, avec recherche dans les messages.</li>
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="pulse" kicker="Monitoring temps réel" heading="Surveillez l'état de chaque port en direct" view="ports" data-reveal>
+    <kyolis-feature-block icon="pulse" kicker="Monitoring temps réel" heading="Surveillez l'état de chaque port en direct" view="ports" src="../assets/img/app/ports-cadre.webp" full="../assets/img/app/ports.webp" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Une vue claire de l'activité réseau, jusqu'à la puissance optique et l'alimentation PoE.</p>
       <ul class="check-list">
         <li><b>État des ports en temps réel</b> : lien, vitesse, duplex, statistiques.</li>
         <li><b>Bande passante à la demande.</b></li>
         <li><b>Lecture des modules optiques SFP</b> en dBm.</li>
         <li><b>Gestion du PoE</b> par port : activation, désactivation, puissance et classe.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Voisins de chaque port</b> : l'application indique à quel équipement chaque port est relié.</li>
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="share" kicker="Accès direct à la configuration" heading="Du problème repéré à l'écran qui le règle" view="acces" flip data-reveal>
+    <kyolis-feature-block icon="share" kicker="Accès direct à la configuration" heading="Du problème repéré à l'écran qui le règle" view="acces" src="../assets/img/app/acces-ssh-cadre.webp" full="../assets/img/app/acces-ssh.webp" flip data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">KYOLIS Manager observe et diagnostique ; pour la configuration fine, il vous mène au bon endroit sans détour.</p>
       <ul class="check-list">
         <li><b>VLAN, ports, adressage IP</b> : ouverture directe du switch concerné, l'app ne s'y substitue pas.</li>
         <li><b>Au choix : interface web ou console SSH / Telnet</b> (CLI), pour les adeptes de la ligne de commande.</li>
         <li><b>Un clic depuis l'anomalie repérée</b>, sans recherche d'adresse ni reconnexion manuelle.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Interface web déjà connectée</b> : un clic ouvre l'interface du switch, sans ressaisir le mot de passe.</li>
       </ul>
     </kyolis-feature-block>
 
-    <kyolis-feature-block icon="share" kicker="Partage sécurisé" heading="Transférez un réseau sans exposer les identifiants" view="partage" data-reveal>
+    <kyolis-feature-block icon="share" kicker="Partage sécurisé" heading="Transférez un réseau sans exposer les identifiants" view="partage" src="../assets/img/app/partage-cadre.webp" full="../assets/img/app/partage.webp" data-reveal>
       <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">Un format chiffré pour partager des réseaux et leurs accès entre postes, en toute sécurité.</p>
       <ul class="check-list">
-        <li>Format <b>.kyolis-share chiffré</b> (chiffrement age, par mot de passe).</li>
+        <li>Format <b>.kyolis-share chiffré</b>, protégé par une clé de partage générée par l'application.</li>
         <li>Transfert des réseaux et de leurs identifiants <b>protégé par une clé de partage</b>.</li>
+        <!-- Ligne nouvelle (Doc, partie 4) : à faire valider -->
+        <li><b>Deux canaux séparés</b> : le fichier d'un côté, la clé de l'autre (SMS, oral). La clé n'est pas récupérable.</li>
+      </ul>
+    </kyolis-feature-block>
+
+    <!-- Nouveau bloc (oct. 2026) : TEXTE À FAIRE VALIDER par les patrons. -->
+    <kyolis-feature-block icon="map" kicker="Cartographie du réseau" heading="Voyez comment votre réseau est câblé" view="parc" src="../assets/img/app/carto-anomalie-cadre.webp" full="../assets/img/app/carto-anomalie.webp" flip data-reveal>
+      <p class="lead" style="font-size:16.5px;margin-bottom:18px;max-width:46ch">L'application dessine automatiquement le plan de votre réseau : quel switch est relié à quel autre, et par quel port.</p>
+      <ul class="check-list">
+        <li><b>Un plan automatique</b> de tous vos switches KYOLIS et de leurs liaisons.</li>
+        <li><b>Repérez les problèmes sur le plan</b> : un switch injoignable passe en rouge et l'application vous dit pourquoi.</li>
+        <li><b>La comparaison avec une référence</b> : enregistrez l'état normal de votre réseau, l'application vous montre ce qui a changé.</li>
+        <li><b>Complétez le plan</b> : nommez les caméras et les postes, ajoutez les switches non administrables.</li>
       </ul>
     </kyolis-feature-block>
 

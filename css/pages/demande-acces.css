@@ -55,9 +55,17 @@
 .req-form textarea{min-height:100px;resize:vertical}
 .req-form button{width:100%;font-family:var(--font-display);font-weight:600;font-size:15px;
   color:var(--color-white);background:var(--color-green);border:none;cursor:pointer;
-  height:48px;border-radius:var(--radius-md);margin-top:8px;transition:background var(--ease)}
-.req-form button:hover{background:var(--color-green-deep)}
+  height:48px;border-radius:var(--radius-md);margin-top:8px;
+  position:relative;isolation:isolate;overflow:hidden}
+.req-form button::before,
+.nl-modal__actions button[data-nl="keep"]::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:var(--gradient-green-kyolis);opacity:0;transition:opacity var(--ease)}
+.req-form button:hover::before,
+.nl-modal__actions button[data-nl="keep"]:hover::before{opacity:1}
 .req-form button:focus-visible{outline:2px solid var(--color-green);outline-offset:3px}
+.req-form button:disabled{opacity:.7;cursor:progress}
+.req-form__error{margin:8px 0 0;padding:11px 14px;border-radius:var(--radius-md);font-size:14px;line-height:1.5;
+  color:var(--color-red);background:#fdf1f1;border:1px solid rgba(211,47,47,.25)}
 .req-form .form-note{font-size:12.5px;line-height:1.5;color:var(--color-gray);margin:14px 0 0;text-align:center}
 /* Champ piège anti-spam : hors écran */
 .req-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -92,8 +100,8 @@
 .nl-modal__actions button{font-family:var(--font-display);font-weight:600;font-size:14px;
   cursor:pointer;height:44px;border-radius:var(--radius-md);border:1px solid transparent;
   transition:background var(--ease),border-color var(--ease),color var(--ease)}
-.nl-modal__actions button[data-nl="keep"]{background:var(--color-green);color:#fff}
-.nl-modal__actions button[data-nl="keep"]:hover{background:var(--color-green-deep)}
+.nl-modal__actions button[data-nl="keep"]{background:var(--color-green);color:#fff;
+  position:relative;isolation:isolate;overflow:hidden}
 .nl-modal__actions button[data-nl="confirm"]{background:transparent;color:var(--color-gray);
   border-color:var(--color-line-strong)}
 .nl-modal__actions button[data-nl="confirm"]:hover{border-color:var(--color-petrol);color:var(--color-ink)}
