@@ -7,7 +7,7 @@
    ===================================================================== */
 return [
     // Adresse publique du site, sans barre finale (sert aux liens des e-mails)
-    'url_site' => 'https://kyolis-manager.com',
+    'url_site' => 'https://kyolismanager.com',
 
     // Base de données. OVH : 'mysql:host=xxx.mysql.db;dbname=xxx;charset=utf8mb4'
     // En local : SQLite, la base est créée toute seule au premier appel.
@@ -21,9 +21,9 @@ return [
     'secret' => 'REMPLACER_PAR_UNE_CLE_ALEATOIRE',
 
     // E-mails
-    'mail_from'     => 'contact@kyolis-manager.com',   // expéditeur (doit être sur le domaine)
+    'mail_from'     => 'contact@kyolismanager.com',   // expéditeur (doit être sur le domaine)
     'mail_from_nom' => 'KYOLIS Manager',
-    'mail_equipe'   => 'contact@kyolis-manager.com',   // reçoit les nouvelles demandes
+    'mail_equipe'   => 'contact@kyolismanager.com',   // reçoit les nouvelles demandes
     // 'php' = fonction mail() d'OVH ; 'fichier' = écrit les e-mails dans storage/mails (tests locaux)
     'mail_mode'     => 'php',
 

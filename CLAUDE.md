@@ -136,9 +136,14 @@ Ces textes sont désormais validés.
 ## Placeholders à remplacer avant mise en ligne
 
 - Lien **Contacter l'équipe** : mène à `ressources.html#contact`, où le **téléphone 04 79 68 76 54**
-  est confirmé. L'e-mail `contact@kyolis-manager.com` (le même que dans l'app) est affiché
-  **par avance** (27/10/2026) : la boîte est **à faire créer par l'IT** avant la mise en ligne.
-  Le bouton « Nous contacter » ouvre un e-mail vers cette adresse.
+  est confirmé. E-mail **`contact@kyolismanager.com`** (sans tiret : c'est le domaine que KYOLIS
+  possède chez OVH, avec .fr/.eu/.pro), boîte demandée à l'IT le 27/10/2026. Le bouton « Nous
+  contacter » ouvre un e-mail vers cette adresse. **L'app 1.0.0 affiche encore
+  contact@kyolis-manager.com (avec tiret), domaine NON détenu** : à corriger dans la prochaine
+  version de l'app ; rachat de kyolis-manager.com (redirection) proposé aux patrons.
+- **Domaine du site : kyolismanager.com.** Chez OVH, le seul hébergement (offre Starter, sans base
+  de données) sert déjà lakyobox.com : il faut un **hébergement dédié** au site (achat à valider).
+  Le code tourne aussi avec SQLite si l'hébergement n'a pas de MySQL.
 - **Captures réelles** : originaux dans `assets/img/captures/` (non versionnés, données sensibles),
   versions floutées publiables dans `assets/img/app/` via `python tools/masquer-captures.py`.
   Photo SBOM non publiée tant que l'app affiche des paquets vulnérables (correction à la prochaine MAJ).

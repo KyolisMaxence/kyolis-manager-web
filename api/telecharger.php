@@ -18,7 +18,7 @@ if (preg_match('/^[a-f0-9]{64}$/', $jeton)) {
     $acces = $st->fetch() ?: null;
 }
 
-$contact = '<p class="note" style="margin-top:24px">Besoin d\'un nouveau lien ? Écrivez-nous à <a href="mailto:contact@kyolis-manager.com">contact@kyolis-manager.com</a> ou appelez le 04 79 68 76 54.</p>';
+$contact = '<p class="note" style="margin-top:24px">Besoin d\'un nouveau lien ? Écrivez-nous à <a href="mailto:contact@kyolismanager.com">contact@kyolismanager.com</a> ou appelez le 04 79 68 76 54.</p>';
 
 if (!$acces || $acces['statut'] !== 'acceptee') {
     http_response_code(404);
