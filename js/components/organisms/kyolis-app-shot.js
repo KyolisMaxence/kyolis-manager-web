@@ -109,7 +109,7 @@ const VIEWS = {
             <div class="palette__row ${active ? 'is-active' : ''}" style="--i:${i}">
               <span>${label}</span>${active ? '<span class="key">Entrée</span>' : ''}
             </div>`).join('')}
-          <div class="palette__foot"><span>KYOLIS Manager</span><span><span class="key">↑</span><span class="key">↓</span> naviguer</span></div>
+          <div class="palette__foot"><span>KYOLIS® Manager</span><span><span class="key">↑</span><span class="key">↓</span> naviguer</span></div>
         </div>
       </div>`;
   },
@@ -358,10 +358,10 @@ class KyolisAppShot extends KyolisElement {
         }
       `,
       html: `
-        <div class="win" role="img" aria-label="Aperçu illustratif de l'interface de KYOLIS Manager">
+        <div class="win" role="img" aria-label="Aperçu illustratif de l'interface de KYOLIS® Manager">
           <div class="bar">
             <img src="../assets/img/logo.png" alt="">
-            <span class="bar__title">KYOLIS Manager</span>
+            <span class="bar__title">KYOLIS® Manager</span>
             <span class="bar__tag">Aperçu illustratif</span>
             <span class="bar__ctrl" aria-hidden="true"><span>─</span><span>☐</span><span>✕</span></span>
           </div>

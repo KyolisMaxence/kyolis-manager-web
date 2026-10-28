@@ -44,7 +44,7 @@ class KyolisPosture extends KyolisElement {
           ${dark ? '<div class="halo"></div>' : ''}
           <div class="wrap">
             <div class="eyebrow">Nos valeurs</div>
-            <div class="claim">KYOLIS conseille, <em>vous agissez.</em></div>
+            <div class="claim">KYOLIS® conseille, <em>vous agissez.</em></div>
             <div class="verbs"><span>Détecte</span><span>Alerte</span><span>Conseille</span><span>Trace</span></div>
             <slot></slot>
           </div>

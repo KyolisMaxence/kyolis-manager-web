@@ -1,5 +1,5 @@
 {
-  "_comment": "Source unique des versions publiées. Publier une version = ajouter une entrée en tête (la première est affichée comme « Version actuelle »). date au format AAAA-MM-JJ. Laisser null ce qui n'est pas encore connu (affiché comme « à compléter »).",
+  "_comment": "Source unique des versions publiées. Publier une version = ajouter une entrée en tête (la première est affichée comme « Version actuelle »). date au format AAAA-MM-JJ. Laisser null ce qui n est pas encore connu (affiché « Bientôt disponible »).",
   "releases": [
     {
       "version": "1.0.0",
@@ -7,14 +7,14 @@
       "size": null,
       "sha256": null,
       "title": "Première version",
-      "summary": "L'administration complète des switches KYOLIS, sécurisée dès la conception.",
+      "summary": "L'administration complète des switches KYOLIS®, sécurisée dès la conception.",
       "sections": [
         {
           "heading": "Fonctionnalités",
           "items": [
-            "Découverte automatique du réseau et reconnaissance des switches KYOLIS.",
+            "Découverte automatique du réseau et reconnaissance des switches KYOLIS®.",
             "Monitoring temps réel des ports : lien, vitesse, statistiques, PoE et modules SFP.",
-            "Maintenance courante : renommer, changer le mot de passe, allumer, éteindre et redémarrer un switch.",
+            "Maintenance courante : renommer, changer le mot de passe et redémarrer un switch.",
             "Upload et download de configuration, sauvegarde réseau, exports CSV.",
             "Journalisation syslog en direct et campagnes d'enregistrement.",
             "Détection des mises à jour de firmware et suivi du cycle de vie.",

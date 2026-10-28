@@ -4,7 +4,7 @@
    duplication). L'attribut "active" marque l'onglet courant.
    L'attribut "tone" = "dark" pose l'en-tête sur un héros sombre
    (accueil) ; il redevient clair au défilement.
-   Sous 920px, la navigation passe dans un menu déroulant (bouton à trois traits).
+   Sous 1140px, la navigation passe dans un menu déroulant (bouton à trois traits).
    La navigation est définie une seule fois ci-dessous (NAV).
    ===================================================================== */
 import { KyolisElement, define } from '../../core/KyolisElement.js';
@@ -14,10 +14,11 @@ const NAV = [
   { id: 'fonctionnalites', label: 'Fonctionnalités',  href: 'fonctionnalites.html' },
   { id: 'securite',        label: 'Sécurité',         href: 'securite.html' },
   { id: 'ressources',      label: "L'application",    href: 'ressources.html' },
+  { id: 'versions',        label: 'Notes de version', href: 'versions.html' },
 ];
 
 /* Libellé et cible de l'appel principal (accès sur demande) */
-export const CTA = { label: "Obtenir l'application", href: 'demande-acces.html' };
+export const CTA = { label: "Recevoir l'application", href: 'demande-acces.html' };
 
 class KyolisHeader extends KyolisElement {
   render() {
@@ -40,7 +41,7 @@ class KyolisHeader extends KyolisElement {
         .right{display:flex;align-items:center}
         nav{display:flex;gap:4px}
         nav a{text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:14px;
-          padding:7px 12px;border-radius:var(--radius-md);color:var(--color-gray);transition:color var(--ease),background var(--ease)}
+          padding:7px 12px;border-radius:var(--radius-md);color:var(--color-gray);white-space:nowrap;transition:color var(--ease),background var(--ease)}
         nav a:hover{color:var(--color-ink);background:var(--color-mist)}
         nav a.active{color:var(--color-ink);background:var(--color-mist)}
         .actions{display:flex;align-items:center;gap:8px;margin-left:20px}
@@ -83,8 +84,8 @@ class KyolisHeader extends KyolisElement {
         .panel nav a{font-size:16px;padding:12px}
         .panel .cta{display:flex;justify-content:center;height:46px;font-size:15px;margin-top:12px}
 
-        @media(max-width:920px){.right>nav{display:none}.actions{margin-left:0}.burger{display:inline-flex}}
-        @media(min-width:921px){.panel{display:none}}
+        @media(max-width:1140px){.right>nav{display:none}.actions{margin-left:0}.burger{display:inline-flex}}
+        @media(min-width:1141px){.panel{display:none}}
         @media(max-width:520px){
           .actions .cta--ghost{display:none}.brand__logo{height:44px}
           .wrap,.panel{padding-left:var(--space-2);padding-right:var(--space-2)}
@@ -93,7 +94,7 @@ class KyolisHeader extends KyolisElement {
       `,
       html: `
         <div class="wrap">
-          <a class="brand" href="index.html" aria-label="KYOLIS Manager, accueil">
+          <a class="brand" href="index.html" aria-label="KYOLIS® Manager, accueil">
             <img class="brand__logo brand__logo--couleur" src="../assets/img/logo/manager-horizontal-couleur.svg" alt="">
             <img class="brand__logo brand__logo--blanc" src="../assets/img/logo/manager-horizontal-blanc.svg" alt="">
           </a>
@@ -139,7 +140,7 @@ class KyolisHeader extends KyolisElement {
       if (e.key === 'Escape' && !panel.hidden) { setOpen(false); burger.focus(); }
     });
     document.addEventListener('click', (e) => { if (!panel.hidden && !e.composedPath().includes(this)) setOpen(false); });
-    window.matchMedia('(min-width: 921px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+    window.matchMedia('(min-width: 1141px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
     window.addEventListener('scroll', syncTone, { passive: true });
     syncTone();
   }

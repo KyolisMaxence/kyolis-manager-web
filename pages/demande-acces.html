@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Obtenir l'application — KYOLIS Manager</title>
-<meta name="description" content="KYOLIS Manager est accessible sur demande. Remplissez le formulaire, l'équipe KYOLIS échange avec vous puis vous envoie un accès personnel.">
+<title>Recevoir l'application — KYOLIS® Manager</title>
+<meta name="description" content="KYOLIS® Manager est accessible sur demande. Remplissez le formulaire, l'équipe KYOLIS® échange avec vous puis vous envoie un accès personnel.">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/shared.css">
@@ -18,9 +18,9 @@
   <div class="wrap req__grid">
 
     <div class="req__pitch">
-      <div class="eyebrow">Obtenir l'application</div>
-      <h1>Obtenez KYOLIS Manager.</h1>
-      <p class="lead">Chez KYOLIS, pas de téléchargement anonyme. Nous faisons connaissance, nous échangeons sur vos besoins, et notre équipe vous accompagne pour une prise en main rapide. Avec nous, vous n'êtes jamais seul face à l'outil.</p>
+      <div class="eyebrow">Recevoir l'application</div>
+      <h1>Obtenez KYOLIS® Manager.</h1>
+      <p class="lead">Chez KYOLIS®, pas de téléchargement anonyme. Nous faisons connaissance, nous échangeons sur vos besoins, et notre équipe vous accompagne pour une prise en main rapide. Avec nous, vous n'êtes jamais seul face à l'outil.</p>
       <ol class="flow">
         <li>
           <h3>Vous faites votre demande</h3>
@@ -76,7 +76,7 @@
         <legend>Votre réseau</legend>
         <div class="row">
           <div class="field">
-            <label for="equipe">Déjà équipé KYOLIS ?</label>
+            <label for="equipe">Déjà équipé KYOLIS® ?</label>
             <select id="equipe" name="equipe" required>
               <option value="" disabled selected>Choisir</option>
               <option value="oui">Oui, déjà équipé</option>
@@ -102,9 +102,11 @@
       </fieldset>
 
       <label class="nl-check">
-        <input type="checkbox" id="newsletter" name="newsletter" checked>
+        <!-- Décochée par défaut (RGPD : une case pré-cochée ne vaut pas consentement) -->
+        <input type="checkbox" id="newsletter" name="newsletter">
         <span>J'accepte de recevoir la newsletter pour être informé des mises à jour, des nouveautés et des avis de sécurité.</span>
       </label>
+      <p class="nl-note">Uniquement pour les mises à jour et les avis de sécurité de KYOLIS® Manager. Jamais de démarchage commercial, jamais transmis à un tiers. Désinscription en un clic dans chaque e-mail.</p>
 
       <!-- Champ piège anti-spam : invisible, ne pas remplir. -->
       <div class="hp" aria-hidden="true">
@@ -114,6 +116,7 @@
       <p class="req-form__error" id="reqError" role="alert" hidden></p>
       <button type="submit">Envoyer ma demande</button>
       <p class="form-note">Après envoi, vous recevrez un e-mail pour confirmer votre adresse. On revient vers vous rapidement.</p>
+      <p class="form-note">Vos données servent uniquement à traiter votre demande. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</p>
     </form>
 
   </div>
@@ -127,7 +130,7 @@
     </div>
     <div class="grid-3">
       <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="switch" size="24"></kyolis-icon></span><h3>Windows</h3><p>Application native Windows. Une version multiplateforme est planifiée.</p></div>
-      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="24"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/en-savoir-plus-sur-windows-hello-et-le-configurer-dae28983-8242-bb2a-d3d1-87c9d265a5f0" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="24"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/security/configure-windows-hello" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
       <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="offline" size="24"></kyolis-icon></span><h3>Aucune connexion requise</h3><p>L'usage courant ne dépend pas d'Internet. Idéal pour les sites isolés.</p></div>
     </div>
   </div>

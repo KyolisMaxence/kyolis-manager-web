@@ -1,0 +1,27 @@
+/* =====================================================================
+   Pages légales : mentions légales et politique de confidentialité.
+   Texte long : colonne de lecture étroite, titres de section sobres.
+   ===================================================================== */
+.legal{max-width:760px;margin:0 auto}
+.legal h2{font-size:22px;font-weight:700;margin:48px 0 14px;color:var(--color-ink)}
+.legal h2:first-child{margin-top:0}
+.legal p,.legal li{font-size:16px;line-height:1.7;color:var(--color-body)}
+.legal p{margin:0 0 14px}
+.legal ul{margin:0 0 14px;padding-left:20px}
+.legal li{margin-bottom:6px}
+.legal a{color:var(--color-green-deep);font-weight:600}
+.legal .maj{font-size:14px;color:var(--color-gray);margin-top:40px}
+
+/* Encadré « en bref » */
+.legal-bref{border:1px solid var(--color-line);border-left:3px solid var(--color-green);border-radius:var(--radius-md);
+  background:var(--color-green-pale);padding:20px 24px;margin:0 0 8px}
+.legal-bref ul{margin:0}
+
+/* Tableau des traitements */
+.legal-table-wrap{overflow-x:auto;margin:0 0 14px;border:1px solid var(--color-line);border-radius:var(--radius-md)}
+.legal-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+.legal-table th{text-align:left;font-family:var(--font-display);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--color-gray);background:var(--color-paper);padding:12px 14px;border-bottom:1px solid var(--color-line)}
+.legal-table td{padding:12px 14px;border-bottom:1px solid var(--color-line);color:var(--color-body);vertical-align:top;line-height:1.55}
+.legal-table tr:last-child td{border-bottom:none}
+.legal-table td:first-child{font-weight:600;color:var(--color-ink)}

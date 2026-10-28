@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $nom = h($acces['nom']);
     $date = date('d/m/Y', strtotime($acces['expire_le']));
     $indispo = is_file($fichier) ? '' : '<p class="espace-erreur">Le fichier est en cours de mise à disposition. Réessayez un peu plus tard ou contactez-nous.</p>';
-    pageMessage('Votre accès personnel', 'KYOLIS Manager ' . $version,
+    pageMessage('Votre accès personnel', 'KYOLIS® Manager ' . $version,
         "Bonjour $nom, votre application est prête. Ce lien est réservé à votre poste et reste valable jusqu'au $date.",
         <<<HTML
 <form method="post" action="$action" class="espace-form">

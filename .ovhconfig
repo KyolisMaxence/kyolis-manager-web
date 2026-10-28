@@ -1,0 +1,7 @@
+# Configuration de l hebergement web OVH (lue par OVH a la racine du site).
+# PHP 8.3 : requis par le parcours d acces sur demande (api/).
+app.engine=php
+app.engine.version=8.3
+http.firewall=none
+environment=production
+container.image=stable64

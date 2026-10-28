@@ -85,6 +85,9 @@
   font-size:13.5px;line-height:1.5;color:var(--color-gray);margin:6px 0 8px}
 .nl-check input{width:18px;height:18px;margin:1px 0 0;flex:none;
   accent-color:var(--color-green);cursor:pointer}
+.nl-note{font-size:12.5px;line-height:1.5;color:var(--color-gray);margin:0 0 8px 29px}
+.req-form .form-note a{color:var(--color-green-deep);font-weight:600}
+.req-form .form-note + .form-note{margin-top:6px}
 
 /* Pop-up d'avertissement newsletter */
 .nl-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;

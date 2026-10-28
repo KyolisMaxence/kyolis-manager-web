@@ -50,6 +50,7 @@ if (!isset(LIBELLES_EQUIPE[$d['equipe']]) || !isset(LIBELLES_PARC[$d['parc']])) 
     json(['ok' => false, 'message' => 'Merci de choisir une réponse dans chaque liste.'], 422);
 }
 
+purgerDonneesExpirees();
 $ip = ipEmpreinte();
 $st = db()->prepare('SELECT COUNT(*) FROM demandes WHERE ip_empreinte = ? AND cree_le > ?');
 $st->execute([$ip, date('Y-m-d H:i:s', time() - 3600)]);

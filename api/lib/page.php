@@ -23,7 +23,7 @@ function page(string $titre, string $contenu): never {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <base href="$base">
-<title>{$titre} · KYOLIS Manager</title>
+<title>{$titre} · KYOLIS® Manager</title>
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/shared.css">

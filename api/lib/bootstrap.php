@@ -38,6 +38,11 @@ function maintenant(): string {
 function db(): PDO {
     static $pdo = null;
     if ($pdo) return $pdo;
+    // SQLite : le dossier de la base (hors du dossier public) est créé au premier appel
+    if (str_starts_with((string) cfg('db_dsn'), 'sqlite:')) {
+        $dossier = dirname(substr((string) cfg('db_dsn'), 7));
+        if (!is_dir($dossier)) mkdir($dossier, 0700, true);
+    }
     $pdo = new PDO(cfg('db_dsn'), cfg('db_user'), cfg('db_pass'), [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -61,6 +66,9 @@ function creerSchemaSqlite(PDO $pdo): void {
         id INTEGER PRIMARY KEY AUTOINCREMENT, demande_id INTEGER NOT NULL REFERENCES demandes(id),
         jeton TEXT NOT NULL UNIQUE, version TEXT NOT NULL, cree_le TEXT NOT NULL, expire_le TEXT NOT NULL,
         telechargements INTEGER NOT NULL DEFAULT 0, max_telechargements INTEGER NOT NULL, dernier_le TEXT)");
+    $pdo->exec("CREATE TABLE IF NOT EXISTS newsletter (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, cree_le TEXT NOT NULL,
+        confirme_le TEXT, jeton TEXT, source TEXT NOT NULL, ip_empreinte TEXT NOT NULL DEFAULT '')");
     $pdo->exec("CREATE TABLE IF NOT EXISTS journal (
         id INTEGER PRIMARY KEY AUTOINCREMENT, demande_id INTEGER NOT NULL REFERENCES demandes(id),
         le TEXT NOT NULL, evenement TEXT NOT NULL, detail TEXT)");
@@ -69,6 +77,54 @@ function creerSchemaSqlite(PDO $pdo): void {
 function journaliser(int $demandeId, string $evenement, ?string $detail = null): void {
     db()->prepare('INSERT INTO journal (demande_id, le, evenement, detail) VALUES (?, ?, ?, ?)')
         ->execute([$demandeId, maintenant(), $evenement, $detail]);
+}
+
+/* Applique les durées de conservation annoncées dans pages/confidentialite.html :
+   - adresse jamais confirmée : demande supprimée après 30 jours ;
+   - demande refusée : supprimée 1 an après la décision ;
+   - empreinte d'adresse IP : effacée après 24 heures (elle ne sert qu'à freiner les robots) ;
+   - inscription à la newsletter jamais confirmée : supprimée après 30 jours.
+   Les demandes acceptées restent : la relation client se poursuit (suppression à la main
+   3 ans après le dernier échange, ou sur demande de la personne).
+   Appelé à chaque nouvelle demande et à chaque ouverture de l'espace équipe. */
+function purgerDonneesExpirees(): void {
+    $pdo = db();
+    $avant = fn(int $secondes) => date('Y-m-d H:i:s', time() - $secondes);
+    $st = $pdo->prepare("SELECT id FROM demandes
+        WHERE (statut = 'email_a_confirmer' AND cree_le < ?) OR (statut = 'refusee' AND decide_le < ?)");
+    $st->execute([$avant(30 * 86400), $avant(365 * 86400)]);
+    $ids = $st->fetchAll(PDO::FETCH_COLUMN);
+    if ($ids) {
+        $marques = implode(',', array_fill(0, count($ids), '?'));
+        foreach (['journal', 'acces'] as $table) {
+            $pdo->prepare("DELETE FROM $table WHERE demande_id IN ($marques)")->execute($ids);
+        }
+        $pdo->prepare("DELETE FROM demandes WHERE id IN ($marques)")->execute($ids);
+    }
+    $pdo->prepare("UPDATE demandes SET ip_empreinte = '' WHERE ip_empreinte <> '' AND cree_le < ?")
+        ->execute([$avant(86400)]);
+    $pdo->prepare("DELETE FROM newsletter WHERE confirme_le IS NULL AND cree_le < ?")->execute([$avant(30 * 86400)]);
+    $pdo->prepare("UPDATE newsletter SET ip_empreinte = '' WHERE ip_empreinte <> '' AND cree_le < ?")
+        ->execute([$avant(86400)]);
+}
+
+/* Inscrit une adresse déjà vérifiée (case newsletter du formulaire de demande,
+   confirmée par le clic de vérification de la demande). Sans effet si déjà inscrite. */
+function inscrireNewsletterConfirmee(string $email): void {
+    $st = db()->prepare('SELECT id, confirme_le FROM newsletter WHERE email = ?');
+    $st->execute([$email]);
+    $ligne = $st->fetch();
+    if (!$ligne) {
+        db()->prepare("INSERT INTO newsletter (email, cree_le, confirme_le, source) VALUES (?, ?, ?, 'demande')")
+            ->execute([$email, maintenant(), maintenant()]);
+    } elseif (!$ligne['confirme_le']) {
+        db()->prepare('UPDATE newsletter SET confirme_le = ?, jeton = NULL WHERE id = ?')->execute([maintenant(), $ligne['id']]);
+    }
+}
+
+/* Lien de désinscription d'un inscrit, signé : impossible de désinscrire quelqu'un d'autre */
+function lienDesinscription(int $id): string {
+    return url('api/desinscription.php?n=' . $id . '&s=' . signer('desinscription:' . $id));
 }
 
 function demande(int $id): ?array {
@@ -168,7 +224,7 @@ function exigerEquipe(): void {
     }
     $cible = h($_SERVER['REQUEST_URI']);
     http_response_code(401);
-    pageMessage('Espace équipe', 'Connexion', 'Réservé à l\'équipe KYOLIS.', <<<HTML
+    pageMessage('Espace équipe', 'Connexion', 'Réservé à l\'équipe KYOLIS®.', <<<HTML
 <form method="post" action="$cible" class="espace-form espace-login">
   $erreur
   <label for="mdp">Mot de passe</label>

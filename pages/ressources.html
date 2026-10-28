@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L'application — KYOLIS Manager</title>
+<title>L'application — KYOLIS® Manager</title>
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/shared.css">
@@ -21,40 +21,16 @@
   </div>
 </section>
 
-<!-- CHANGELOG (en tête : ce qui concerne l'app) -->
+<!-- NOTES DE VERSION (en tête : ce qui concerne l'app). Le détail vit sur une seule page,
+     versions.html, alimentée par data/releases.json (décision du 28/10/2026). -->
 <section class="section" id="changelog">
   <div class="wrap">
     <div class="narrow center" data-reveal>
       <div class="eyebrow">Suivi du logiciel</div>
       <h2>Notes de version</h2>
       <p class="lead">Les nouveautés version après version, avec les apports de sécurité mis en avant.</p>
-    </div>
-    <div class="cl" data-reveal>
-      <!-- Modèle d'entrée à dupliquer pour chaque nouvelle version -->
-      <div class="cl-entry">
-        <div class="cl-ver">Version 1.0.0<span class="cl-date">date à compléter</span></div>
-        <div class="cl-body">
-          <kyolis-badge tone="solid">Première version</kyolis-badge>
-          <p class="cl-lead">L'administration complète des switches KYOLIS, sécurisée dès la conception.</p>
-          <h4>Fonctionnalités</h4>
-          <ul class="check-list cl-list">
-            <li>Découverte automatique du réseau et reconnaissance des switches KYOLIS.</li>
-            <li>Monitoring temps réel des ports : lien, vitesse, statistiques, PoE et modules SFP.</li>
-            <li>Maintenance courante : renommer, changer le mot de passe, allumer, éteindre et redémarrer un switch.</li>
-            <li>Upload et download de configuration, sauvegarde réseau, exports CSV.</li>
-            <li>Journalisation syslog en direct et campagnes d'enregistrement.</li>
-            <li>Détection des mises à jour de firmware et suivi du cycle de vie.</li>
-            <li>Partage chiffré de réseaux au format .kyolis-share.</li>
-            <li>Accès direct au switch en interface web ou en SSH/Telnet.</li>
-          </ul>
-          <h4>Sécurité</h4>
-          <ul class="check-list cl-list">
-            <li>Double authentification Windows Hello et FIDO2, hachage Argon2id.</li>
-            <li>Chiffrement au repos de toutes les données, protégé par DPAPI Windows.</li>
-            <li>Journal d'audit inviolable, conservé six mois.</li>
-            <li>Nomenclature SBOM CycloneDX et analyse de vulnérabilités.</li>
-          </ul>
-        </div>
+      <div class="cta-band__actions">
+        <kyolis-button href="versions.html">Voir les notes de version</kyolis-button>
       </div>
     </div>
   </div>
@@ -68,11 +44,11 @@
       <h2>Sécurité, conformité, installation</h2>
     </div>
     <div class="faq" data-reveal>
-      <kyolis-faq-item question="L'application a-t-elle besoin d'Internet pour fonctionner ?"><p>Non. KYOLIS Manager fonctionne hors ligne pour l'usage courant et ne communique jamais vers l'extérieur sans une action de votre part. Elle est adaptée aux sites isolés sans accès Internet permanent.</p></kyolis-faq-item>
+      <kyolis-faq-item question="L'application a-t-elle besoin d'Internet pour fonctionner ?"><p>Non. KYOLIS® Manager fonctionne hors ligne pour l'usage courant et ne communique jamais vers l'extérieur sans une action de votre part. Elle est adaptée aux sites isolés sans accès Internet permanent.</p></kyolis-faq-item>
       <kyolis-faq-item question="En quoi l'application aide-t-elle à la conformité NIS2 et CRA ?"><p>Elle intègre des mesures de sécurité alignées sur ces cadres (authentification forte, chiffrement au repos, journal d'audit, nomenclature SBOM) et trace les décisions de sécurité, ce qui permet d'atteindre et de démontrer votre niveau de conformité.</p></kyolis-faq-item>
       <kyolis-faq-item question="Mes mots de passe et identifiants sont-ils protégés ?"><p>Les mots de passe sont hachés en Argon2id. Les identifiants sont protégés par DPAPI Windows, avec une clé liée à votre compte et à votre machine. Toutes les données sensibles sont chiffrées au repos : un fichier copié sur une autre machine est illisible.</p></kyolis-faq-item>
       <kyolis-faq-item question="Que se passe-t-il pour mes données lors d'une mise à jour ?"><p>Vos données existantes (identifiants, réseaux, sauvegardes) sont conservées : vous installez la nouvelle version par-dessus l'ancienne. Si vous êtes inscrit à la newsletter, vous êtes prévenu à chaque mise à jour.</p></kyolis-faq-item>
-      <kyolis-faq-item question="L'application modifie-t-elle automatiquement mon réseau ?"><p>Non. KYOLIS conseille, le client agit. L'application détecte, alerte, conseille et trace, mais l'exécution reste à l'opérateur. C'est un choix assumé d'alignement NIS2 et ISO 27001.</p></kyolis-faq-item>
+      <kyolis-faq-item question="L'application modifie-t-elle automatiquement mon réseau ?"><p>Non. KYOLIS® conseille, le client agit. L'application détecte, alerte, conseille et trace, mais l'exécution reste à l'opérateur. C'est un choix assumé d'alignement NIS2 et ISO 27001.</p></kyolis-faq-item>
       <kyolis-faq-item question="Comment vérifier que le fichier reçu est intègre ?"><p>Une empreinte SHA-256 vous est communiquée avec l'application : comparez-la avec celle du fichier reçu pour confirmer son intégrité. La signature de l'installateur par certificat à validation étendue est prévue.</p></kyolis-faq-item>
       <kyolis-faq-item question="Sur quelles plateformes l'application est-elle disponible ?"><p>Windows en version 1. Une version multiplateforme est planifiée.</p></kyolis-faq-item>
       <kyolis-faq-item question="Comment récupérer mon compte si j'oublie mon mot de passe ?"><p>Une clé de secours en mode zéro connaissance permet la récupération. L'éditeur ne peut pas accéder à votre mot de passe.</p></kyolis-faq-item>
@@ -94,18 +70,22 @@
         <kyolis-icon name="mail" size="34"></kyolis-icon>
         <h3>Avis de versions et de sécurité</h3>
         <p>Soyez prévenu à chaque nouvelle version et à chaque avis de sécurité important.</p>
-        <div class="signup-field">
-          <input type="email" placeholder="Votre adresse email" aria-label="Adresse email">
-          <kyolis-button href="#">S'inscrire</kyolis-button>
-        </div>
-        <small>Inscription conforme RGPD. Désinscription possible à tout moment. À brancher sur votre outil de newsletter (Brevo conseillé).</small>
+        <!-- Envoyé à api/newsletter.php (script en bas de page) : e-mail de confirmation,
+             puis inscription active. Même anti-robots que la demande d'accès. -->
+        <form class="signup-field" id="nlForm" action="../api/newsletter.php" method="post">
+          <input type="email" name="email" placeholder="Votre adresse email" aria-label="Adresse email" autocomplete="email" required>
+          <input type="text" name="website" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="signup-btn">S'inscrire</button>
+        </form>
+        <p class="signup-retour" id="nlRetour" role="status" hidden></p>
+        <small>Uniquement pour les mises à jour et les avis de sécurité de KYOLIS® Manager. Jamais de démarchage commercial, jamais transmis à un tiers. Désinscription en un clic dans chaque e-mail. <a href="confidentialite.html">Politique de confidentialité</a>.</small>
       </div>
       <div class="signup-box" id="contact" data-reveal>
         <kyolis-icon name="mail" size="34"></kyolis-icon>
         <h3>Une question ?</h3>
-        <p>L'équipe KYOLIS répond à vos questions sur l'application, la sécurité et la conformité.</p>
+        <p>L'équipe KYOLIS® répond à vos questions sur l'application, la sécurité et la conformité.</p>
         <!-- E-mail contact@kyolismanager.com (domaine détenu par KYOLIS), boîte demandée à l'IT le
-             27/10/2026. Attention : l'app 1.0.0 affiche encore contact@kyolis-manager.com (avec tiret). -->
+             27/10/2026. Même adresse que dans l'application. -->
         <kyolis-button href="mailto:contact@kyolismanager.com">Nous contacter</kyolis-button>
         <small class="contact-lines">
           E-mail : <a href="mailto:contact@kyolismanager.com">contact@kyolismanager.com</a><br>
@@ -119,5 +99,35 @@
 <kyolis-footer></kyolis-footer>
 
 <script type="module" src="../js/main.js"></script>
+<script>
+  /* Inscription à la newsletter : envoi à api/newsletter.php sans quitter la page.
+     « duree » (temps passé sur la page) sert à écarter les robots. */
+  (function () {
+    var form = document.getElementById('nlForm');
+    var retour = document.getElementById('nlRetour');
+    var btn = form.querySelector('button');
+    var debut = Date.now();
+    var ECHEC = "L'inscription n'a pas abouti. Vérifiez votre connexion et réessayez.";
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      btn.disabled = true;
+      var donnees = new FormData(form);
+      donnees.append('duree', String(Date.now() - debut));
+      fetch(form.action, { method: 'POST', body: donnees, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (rep) {
+          if (!rep.ok) throw new Error(rep.message || ECHEC);
+          retour.className = 'signup-retour';
+          retour.textContent = 'Merci ! Confirmez votre inscription en cliquant sur le lien envoyé par e-mail.';
+          form.reset();
+        })
+        .catch(function (e2) {
+          retour.className = 'signup-retour is-erreur';
+          retour.textContent = e2 instanceof SyntaxError ? ECHEC : e2.message;
+        })
+        .finally(function () { retour.hidden = false; btn.disabled = false; });
+    });
+  })();
+</script>
 </body>
 </html>

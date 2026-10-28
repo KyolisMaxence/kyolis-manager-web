@@ -34,16 +34,15 @@ class KyolisFooter extends KyolisElement {
         <div class="wrap">
           <div class="top">
             <div class="brand-col">
-              <a class="brand" href="index.html" aria-label="KYOLIS Manager, accueil"><img src="../assets/img/logo/manager-horizontal-blanc.svg" alt=""></a>
-              <p class="desc">Le logiciel d'administration des switches KYOLIS. Observer, diagnostiquer et sécuriser votre parc, depuis un seul poste, édité par le fabricant.</p>
+              <a class="brand" href="index.html" aria-label="KYOLIS® Manager, accueil"><img src="../assets/img/logo/manager-horizontal-blanc.svg" alt=""></a>
+              <p class="desc">Le logiciel d'administration des switches KYOLIS®. Observer, diagnostiquer et sécuriser votre parc, depuis un seul poste, édité par le fabricant.</p>
             </div>
             <div class="col">
               <h4>Le produit</h4>
               <a href="fonctionnalites.html">Fonctionnalités</a>
               <a href="securite.html">Sécurité et conformité</a>
-              <a href="demande-acces.html">Obtenir l'application</a>
+              <a href="demande-acces.html">Recevoir l'application</a>
               <a href="ressources.html">L'application</a>
-              <!-- Nouveau lien, à faire valider -->
               <a href="versions.html">Notes de version</a>
             </div>
             <div class="col">
@@ -56,10 +55,10 @@ class KyolisFooter extends KyolisElement {
           </div>
           <div class="bottom">
             <div class="links">
-              <a href="#">Mentions légales</a>
-              <a href="#">Politique de confidentialité RGPD</a>
+              <a href="mentions-legales.html">Mentions légales</a>
+              <a href="confidentialite.html">Politique de confidentialité RGPD</a>
             </div>
-            <div>© 2026 KYOLIS. Tous droits réservés.</div>
+            <div>© 2026 KYOLIS®. Tous droits réservés.</div>
           </div>
         </div>
       `,

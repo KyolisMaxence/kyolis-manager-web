@@ -41,6 +41,19 @@ CREATE TABLE IF NOT EXISTS acces (
   FOREIGN KEY (demande_id) REFERENCES demandes(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Inscrits à la newsletter (mises à jour et avis de sécurité uniquement).
+-- Double confirmation : l'inscription n'est active qu'après le clic dans l'e-mail.
+CREATE TABLE IF NOT EXISTS newsletter (
+  id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  email            VARCHAR(190) NOT NULL UNIQUE,
+  cree_le          DATETIME     NOT NULL,
+  confirme_le      DATETIME     NULL,
+  jeton            CHAR(64)     NULL,      -- empreinte SHA-256 du jeton de confirmation
+  source           VARCHAR(20)  NOT NULL,  -- 'site' (bloc newsletter) ou 'demande' (case du formulaire)
+  ip_empreinte     CHAR(64)     NOT NULL DEFAULT '',
+  INDEX (ip_empreinte, cree_le)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Historique de chaque demande (le « mini CRM »)
 CREATE TABLE IF NOT EXISTS journal (
   id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

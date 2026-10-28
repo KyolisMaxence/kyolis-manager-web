@@ -31,7 +31,7 @@ if (!$demande || strtotime($demande['cree_le']) < time() - JOURS_VALIDITE_VERIFI
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $action = h(url('api/confirmer.php'));
     pageMessage('Dernière étape', 'Confirmez votre adresse',
-        'Un clic pour confirmer l\'adresse <b>' . h($demande['email']) . '</b> et transmettre votre demande à l\'équipe KYOLIS.',
+        'Un clic pour confirmer l\'adresse <b>' . h($demande['email']) . '</b> et transmettre votre demande à l\'équipe KYOLIS®.',
         <<<HTML
 <form method="post" action="$action" class="espace-form">
   <input type="hidden" name="t" value="$jeton">
@@ -43,6 +43,8 @@ HTML);
 db()->prepare("UPDATE demandes SET statut = 'a_traiter', email_confirme_le = ?, email_jeton = NULL WHERE id = ?")
     ->execute([maintenant(), $demande['id']]);
 journaliser((int) $demande['id'], 'email_confirme');
+// Case newsletter cochée : l'adresse vient d'être vérifiée, l'inscription est active
+if ($demande['newsletter']) inscrireNewsletterConfirmee($demande['email']);
 
 if (mailEquipe($demande)) {
     journaliser((int) $demande['id'], 'equipe_prevenue');
@@ -51,5 +53,5 @@ if (mailEquipe($demande)) {
 }
 
 pageMessage('Adresse confirmée', 'Merci, votre demande est transmise',
-    'Un membre de l\'équipe KYOLIS vous contacte rapidement pour échanger sur vos besoins. Vous recevrez ensuite votre accès personnel par e-mail.',
+    'Un membre de l\'équipe KYOLIS® vous contacte rapidement pour échanger sur vos besoins. Vous recevrez ensuite votre accès personnel par e-mail.',
     $lienAccueil, 'shield');

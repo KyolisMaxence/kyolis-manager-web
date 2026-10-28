@@ -43,7 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         journaliser($id, 'note_modifiee');
     }
 
-    if ($action === 'accepter' && $d['statut'] === 'a_traiter') {
+    // Sans installateur sur le serveur, un lien personnel ne mènerait à rien : on n'en envoie pas
+    $installateurPresent = is_file((string) cfg('installateur'));
+
+    if (in_array($action, ['accepter', 'renvoyer'], true) && !$installateurPresent) {
+        $retour = 'Le fichier d\'installation n\'est pas encore sur le serveur : aucun lien n\'a été envoyé. Réessayez une fois le fichier déposé.';
+    } elseif ($action === 'accepter' && $d['statut'] === 'a_traiter') {
         db()->prepare("UPDATE demandes SET statut = 'acceptee', decide_le = ?, poste_id = ? WHERE id = ?")
             ->execute([maintenant(), uuid4(), $id]);
         journaliser($id, 'acceptee');
@@ -74,7 +79,7 @@ $lignes = [
     'Fonction' => $d['fonction'], 'Société' => $d['societe'],
     'E-mail' => '<a href="mailto:' . h($d['email']) . '">' . h($d['email']) . '</a>',
     'Téléphone' => '<a href="tel:' . h(preg_replace('/[^0-9+]/', '', $d['tel'])) . '">' . h($d['tel']) . '</a>',
-    'Déjà équipé KYOLIS' => LIBELLES_EQUIPE[$d['equipe']] ?? $d['equipe'],
+    'Déjà équipé KYOLIS®' => LIBELLES_EQUIPE[$d['equipe']] ?? $d['equipe'],
     'Nombre de switches' => LIBELLES_PARC[$d['parc']] ?? $d['parc'],
     'Newsletter' => $d['newsletter'] ? 'Oui' : 'Non',
     'Reçue le' => date('d/m/Y à H:i', strtotime($d['cree_le'])),
@@ -111,6 +116,9 @@ $boutons = match ($d['statut']) {
 };
 $attente = $d['statut'] === 'email_a_confirmer'
     ? '<p class="espace-note">Le demandeur n\'a pas encore confirmé son adresse e-mail : pas de décision possible pour l\'instant.</p>' : '';
+if (in_array($d['statut'], ['a_traiter', 'acceptee'], true) && !is_file((string) cfg('installateur'))) {
+    $attente .= '<p class="espace-note">Le fichier d\'installation n\'est pas encore sur le serveur : l\'envoi de lien est bloqué tant qu\'il n\'est pas déposé. Vous pouvez déjà échanger avec le demandeur et noter vos remarques.</p>';
+}
 
 $liens = $liens ?: '<li>Aucun pour l\'instant.</li>';
 $nomH = h($d['nom']);

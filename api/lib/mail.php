@@ -3,7 +3,7 @@
    Envoi des e-mails du parcours, en texte brut UTF-8.
    mail_mode = 'php'     : fonction mail() de l'hébergement OVH ;
    mail_mode = 'fichier' : écrit l'e-mail dans storage/mails/ (tests locaux).
-   Les textes des e-mails sont NOUVEAUX : à faire valider par les patrons.
+   Textes des e-mails validés par les patrons le 28/10/2026.
    ===================================================================== */
 declare(strict_types=1);
 
@@ -38,7 +38,7 @@ function mailVerification(array $d, string $jeton): bool {
     $corps = <<<TXT
 Bonjour {$d['nom']},
 
-Merci pour votre demande d'accès à KYOLIS Manager.
+Merci pour votre demande d'accès à KYOLIS® Manager.
 
 Pour la valider, confirmez votre adresse e-mail en ouvrant ce lien :
 $lien
@@ -46,9 +46,27 @@ $lien
 Sans cette confirmation, nous ne pourrons pas donner suite à votre demande.
 Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet e-mail.
 
-L'équipe KYOLIS
+L'équipe KYOLIS®
 TXT;
-    return envoyerMail($d['email'], 'Confirmez votre demande d\'accès à KYOLIS Manager', $corps);
+    return envoyerMail($d['email'], 'Confirmez votre demande d\'accès à KYOLIS® Manager', $corps);
+}
+
+/* 1 bis. Inscription à la newsletter depuis le site : confirmer l'adresse */
+function mailNewsletterConfirmation(string $email, string $jeton): bool {
+    $lien = url('api/newsletter-confirmer.php?t=' . $jeton);
+    $corps = <<<TXT
+Bonjour,
+
+Pour recevoir les mises à jour et les avis de sécurité de KYOLIS® Manager, confirmez votre inscription en ouvrant ce lien :
+$lien
+
+Uniquement pour les mises à jour et les avis de sécurité de KYOLIS® Manager. Jamais de démarchage commercial, jamais transmis à un tiers. Désinscription en un clic dans chaque e-mail.
+
+Si vous n'êtes pas à l'origine de cette inscription, ignorez simplement cet e-mail : elle sera supprimée.
+
+L'équipe KYOLIS®
+TXT;
+    return envoyerMail($email, 'Confirmez votre inscription aux nouvelles de KYOLIS® Manager', $corps);
 }
 
 /* 2. À l'équipe : une demande confirmée attend une décision */
@@ -58,14 +76,14 @@ function mailEquipe(array $d): bool {
     $parc = LIBELLES_PARC[$d['parc']] ?? $d['parc'];
     $nl = $d['newsletter'] ? 'oui' : 'non';
     $corps = <<<TXT
-Nouvelle demande d'accès à KYOLIS Manager (n° {$d['id']}), adresse e-mail confirmée.
+Nouvelle demande d'accès à KYOLIS® Manager (n° {$d['id']}), adresse e-mail confirmée.
 
 Nom : {$d['nom']}
 Fonction : {$d['fonction']}
 Société : {$d['societe']}
 E-mail : {$d['email']}
 Téléphone : {$d['tel']}
-Déjà équipé KYOLIS : $equipe
+Déjà équipé KYOLIS® : $equipe
 Nombre de switches : $parc
 Newsletter : $nl
 
@@ -88,7 +106,7 @@ function mailAcces(array $d, string $jeton, string $expire): bool {
     $corps = <<<TXT
 Bonjour {$d['nom']},
 
-Votre accès à KYOLIS Manager est prêt. Voici votre lien personnel de téléchargement :
+Votre accès à KYOLIS® Manager est prêt. Voici votre lien personnel de téléchargement :
 $lien
 
 Ce lien est réservé à votre poste. Il est valable $jours jours (jusqu'au $date) et ne doit pas être partagé : pour équiper un autre poste, faites une nouvelle demande.
@@ -98,7 +116,7 @@ $versions
 
 Une question ? Répondez simplement à cet e-mail.
 
-L'équipe KYOLIS
+L'équipe KYOLIS®
 TXT;
-    return envoyerMail($d['email'], 'Votre accès à KYOLIS Manager', $corps);
+    return envoyerMail($d['email'], 'Votre accès à KYOLIS® Manager', $corps);
 }

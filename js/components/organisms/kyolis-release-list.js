@@ -9,9 +9,12 @@
    ===================================================================== */
 import { define } from '../../core/KyolisElement.js';
 
+/* Tant que le fichier d'une version n'est pas publié, ses dates et taille sont à null :
+   on affiche « Bientôt disponible » plutôt qu'un champ vide. */
+const BIENTOT = 'Bientôt disponible';
 const fmtDate = (iso) => (iso
   ? new Date(iso + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
-  : 'Date à compléter');
+  : BIENTOT);
 
 class KyolisReleaseList extends HTMLElement {
   async connectedCallback() {
@@ -66,7 +69,7 @@ class KyolisReleaseList extends HTMLElement {
           ${sections}
           <dl class="rl-facts">
             <div><dt>Plateforme</dt><dd>Windows</dd></div>
-            <div><dt>Taille</dt><dd>${r.size || '<span class="rl-todo">À compléter</span>'}</dd></div>
+            <div><dt>Taille</dt><dd>${r.size || `<span class="rl-todo">${BIENTOT}</span>`}</dd></div>
             <div class="rl-sha"><dt>SHA-256</dt><dd>${sha}</dd></div>
           </dl>
         </div>

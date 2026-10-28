@@ -22,7 +22,7 @@ return [
 
     // E-mails
     'mail_from'     => 'contact@kyolismanager.com',   // expéditeur (doit être sur le domaine)
-    'mail_from_nom' => 'KYOLIS Manager',
+    'mail_from_nom' => 'KYOLIS® Manager',
     'mail_equipe'   => 'contact@kyolismanager.com',   // reçoit les nouvelles demandes
     // 'php' = fonction mail() d'OVH ; 'fichier' = écrit les e-mails dans storage/mails (tests locaux)
     'mail_mode'     => 'php',
