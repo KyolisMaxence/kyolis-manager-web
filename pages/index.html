@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KYOLIS Manager — Voyez et administrez tout votre parc de switches depuis un seul poste</title>
+<title>KYOLIS® Manager — Voyez et administrez tout votre parc de switches depuis un seul poste</title>
+<meta name="description" content="KYOLIS® Manager scanne votre réseau, repère les anomalies de vos switches KYOLIS® et vous mène à la solution. Windows, hors ligne, données chiffrées.">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/shared.css">
@@ -11,23 +12,24 @@
 </head>
 <body>
 
-<kyolis-header active="accueil"></kyolis-header>
+<kyolis-header active="accueil" tone="dark"></kyolis-header>
 
-<!-- HERO (spécifique à l'accueil : layout unique, reste en light DOM) -->
-<section class="hero">
-  <div class="wrap hero__grid">
-    <div>
-      <div class="eyebrow">Le logiciel d'administration des switches KYOLIS</div>
-      <h1 class="hero__title">Tout votre parc KYOLIS, <em>d'un seul coup d'œil.</em></h1>
-      <p class="lead hero__lead">KYOLIS Manager scanne votre réseau et dresse l'état de tous vos switches KYOLIS : adresses en doublon, mots de passe, configurations, firmwares (maj)… Réglez les opérations courantes directement, ou laissez l'app vous ouvrir le bon écran de configuration en un clic.</p>
+<!-- HERO sombre : le produit au centre, comme une capture étendue -->
+<section class="hero dark">
+  <div class="hero__stripes" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__text">
+      <div class="eyebrow">Le logiciel d'administration des switches KYOLIS®</div>
+      <h1 class="hero__title">Tout votre parc KYOLIS®, <em>d'un seul coup d'œil.</em></h1>
+      <p class="lead hero__lead">KYOLIS® Manager scanne votre réseau et dresse l'état de tous vos switches KYOLIS® : adresses en doublon, mots de passe, configurations, firmwares (maj)… Réglez les opérations courantes directement, ou laissez l'app vous ouvrir le bon écran de configuration en un clic.</p>
       <div class="hero__actions">
-        <kyolis-button href="telechargement.html">Obtenir l'application</kyolis-button>
-        <kyolis-button href="fonctionnalites.html" variant="ghost">Voir les fonctionnalités</kyolis-button>
+        <kyolis-button href="demande-acces.html">Recevoir l'application</kyolis-button>
+        <kyolis-button href="fonctionnalites.html" variant="ghost-dark">Voir les fonctionnalités</kyolis-button>
       </div>
       <p class="hero__os">Windows · fonctionne hors ligne · données chiffrées sur le poste</p>
     </div>
-    <div class="hero__visual" data-reveal>
-      <div class="shot">Capture de l'application<br>(vue du parc après un scan)</div>
+    <div class="hero__visual">
+      <kyolis-app-shot view="parc" src="../assets/img/app/detail-reseau.webp" full="../assets/img/app/detail-reseau.webp" alt="Détail d'un réseau dans KYOLIS® Manager : switches, modèles, firmwares et anomalies"></kyolis-app-shot>
       <div class="hero__float">
         <kyolis-icon name="search" size="26"></kyolis-icon>
         <div><b>Tout le parc en un scan</b><span>IP, PoE, firmware, mots de passe</span></div>
@@ -36,15 +38,17 @@
   </div>
 </section>
 
-<!-- COMMENT ÇA MARCHE (3 temps : le cœur du produit) -->
-<section class="context">
+<!-- COMMENT ÇA MARCHE (3 temps : le cœur du produit), dans la continuité sombre -->
+<section class="steps dark">
   <div class="wrap">
-    <div class="eyebrow eyebrow--light">Comment ça marche</div>
-    <h2 class="context__title">Scanner, repérer, résoudre</h2>
-    <div class="context__row">
-      <div class="context__item"><h3>1 · Scanner</h3><p>Branchez l'application : elle découvre tous vos switches KYOLIS et dresse l'état de votre réseau, sans configuration préalable.</p></div>
-      <div class="context__item"><h3>2 · Repérer</h3><p>IP en doublon, mots de passe faibles, firmwares : les anomalies remontent seules, site par site.</p></div>
-      <div class="context__item"><h3>3 · Résoudre</h3><p>Lancez l'action directement ou ouvrez en un clic l'interface du switch. Directement en ligne de commande ou sur votre navigateur.</p></div>
+    <div class="narrow center">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>Scanner, repérer, résoudre</h2>
+    </div>
+    <div class="steps__row">
+      <div class="step" data-reveal><h3>1 · Scanner</h3><p>Branchez l'application : elle découvre tous vos switches KYOLIS® et dresse l'état de votre réseau, sans configuration préalable.</p></div>
+      <div class="step" data-reveal><h3>2 · Repérer</h3><p>IP en doublon, mots de passe faibles, firmwares : les anomalies remontent seules, site par site.</p></div>
+      <div class="step" data-reveal><h3>3 · Résoudre</h3><p>Lancez l'action directement ou ouvrez en un clic l'interface du switch. Directement en ligne de commande ou sur votre navigateur.</p></div>
     </div>
   </div>
 </section>
@@ -55,21 +59,29 @@
     <div class="narrow center" data-reveal>
       <div class="eyebrow">Ce que vous gagnez</div>
       <h2>Fini le switch par switch</h2>
-      <p class="lead">Aujourd'hui, mettre à jour un firmware ou changer un mot de passe vous oblige à vous brancher sur chaque appareil. KYOLIS Manager voit tout votre parc, signale ce qui cloche et vous mène à la solution, depuis votre poste.</p>
+      <p class="lead">Aujourd'hui, mettre à jour un firmware ou changer un mot de passe vous oblige à vous brancher sur chaque appareil. KYOLIS® Manager voit tout votre parc, signale ce qui cloche et vous mène à la solution, depuis votre poste.</p>
     </div>
     <div class="benefits">
-      <kyolis-media-item icon="search" heading="Tout le parc en un écran" data-reveal>
-        <p>Un scan et vous voyez chaque switch KYOLIS : adresse IP, état des ports, alimentation PoE, version de firmware et robustesse des mots de passe, les doublons d'IP… les anomalies ressortent d'eux-mêmes.</p>
-      </kyolis-media-item>
-      <kyolis-media-item icon="refresh" heading="Les actions courantes, en masse" data-reveal>
-        <p>Mots de passe, firmwares, PoE, redémarrage, export de configuration, surveillance syslog ciblée : lancez la maintenance sur un seul switch ou sur tout le parc, en une fois.</p>
-      </kyolis-media-item>
-      <kyolis-media-item icon="gear" heading="Le bon écran en un clic" data-reveal>
-        <p>Pour la configuration fine, VLAN, ports, adressage. L'app ne remplace pas l'interface du switch : elle vous y emmène directement, sur le bon appareil, dès qu'une anomalie est repérée.</p>
-      </kyolis-media-item>
-      <kyolis-media-item icon="switch" heading="Édité par le fabricant" data-reveal>
-        <p>KYOLIS conçoit les switches et l'application qui les administre. Une connaissance parfaite de A à Z !</p>
-      </kyolis-media-item>
+      <div class="card benefit" data-reveal>
+        <kyolis-media-item icon="search" heading="Tout le parc en un écran">
+          <p>Un scan, vos mots de passe renseignés, et vous voyez chaque switch KYOLIS® : adresse IP, état des ports, alimentation PoE, version de firmware, doublons d'IP. Les anomalies ressortent d'elles-mêmes.</p>
+        </kyolis-media-item>
+      </div>
+      <div class="card benefit" data-reveal>
+        <kyolis-media-item icon="refresh" heading="Les actions courantes, en masse">
+          <p>Mots de passe, configurations, firmwares : lancez-les sur tout le parc en une fois. PoE, redémarrage, export de configuration et surveillance syslog ciblée se pilotent switch par switch, sans ligne de commande.</p>
+        </kyolis-media-item>
+      </div>
+      <div class="card benefit" data-reveal>
+        <kyolis-media-item icon="gear" heading="Le bon écran en un clic">
+          <p>Pour la configuration fine, VLAN, ports, adressage. L'app ne remplace pas l'interface du switch : elle vous y emmène directement, sur le bon appareil, dès qu'une anomalie est repérée.</p>
+        </kyolis-media-item>
+      </div>
+      <div class="card benefit" data-reveal>
+        <kyolis-media-item icon="switch" heading="Édité par le fabricant">
+          <p>KYOLIS® conçoit les switches et l'application qui les administre. Une connaissance parfaite de A à Z !</p>
+        </kyolis-media-item>
+      </div>
     </div>
   </div>
 </section>
@@ -80,16 +92,16 @@
     <div class="narrow center" data-reveal>
       <div class="eyebrow">Sécurisé et conforme par conception</div>
       <h2>Administrer sans exposer</h2>
-      <p class="lead">Reprendre la main sur son réseau ne doit pas l'exposer. KYOLIS Manager chiffre, authentifie et trace chaque action, aligné sur NIS2, CRA et ISO 27001.</p>
+      <p class="lead">Reprendre la main sur son réseau ne doit pas l'exposer. KYOLIS® Manager chiffre, authentifie et trace chaque action, aligné sur NIS2, CRA et ISO 27001.</p>
     </div>
     <div class="pillars">
-      <div class="pillar" data-reveal><kyolis-icon name="lock" size="34"></kyolis-icon><h3>Double authentification Windows Hello et FIDO2</h3><p>Obligatoire pour tous les comptes, clé dans le TPM, résistante au phishing.</p></div>
-      <div class="pillar" data-reveal><kyolis-icon name="shield" size="34"></kyolis-icon><h3>Chiffrement au repos de toutes les données</h3><p>Topologie, journaux et identifiants illisibles si les fichiers sont copiés ailleurs.</p></div>
-      <div class="pillar" data-reveal><kyolis-icon name="doc" size="34"></kyolis-icon><h3>Journal d'audit aligné sur NIS2</h3><p>En ajout seul, consultable et exportable, conservé six mois.</p></div>
-      <div class="pillar" data-reveal><kyolis-icon name="cube" size="34"></kyolis-icon><h3>Nomenclature SBOM CycloneDX</h3><p>Composition logicielle et analyse de vulnérabilités, exigence de transparence du CRA.</p></div>
+      <div class="card pillar" data-reveal><kyolis-icon name="lock" size="28"></kyolis-icon><h3>Double authentification Windows Hello et FIDO2</h3><p>Obligatoire pour tous les comptes, clé dans le TPM, résistante au phishing.</p></div>
+      <div class="card pillar" data-reveal><kyolis-icon name="shield" size="28"></kyolis-icon><h3>Chiffrement au repos de toutes les données</h3><p>Topologie, journaux et identifiants illisibles si les fichiers sont copiés ailleurs.</p></div>
+      <div class="card pillar" data-reveal><kyolis-icon name="doc" size="28"></kyolis-icon><h3>Journal d'audit aligné sur NIS2</h3><p>En ajout seul, consultable et exportable, conservé six mois.</p></div>
+      <div class="card pillar" data-reveal><kyolis-icon name="cube" size="28"></kyolis-icon><h3>Nomenclature SBOM CycloneDX</h3><p>Composition logicielle et analyse de vulnérabilités, exigence de transparence du CRA.</p></div>
     </div>
-    <div class="center" style="margin-top:48px" data-reveal>
-      <kyolis-button href="securite.html">Voir toute la sécurité et la conformité</kyolis-button>
+    <div class="center" style="margin-top:40px" data-reveal>
+      <kyolis-button href="securite.html" variant="ghost">Voir toute la sécurité et la conformité</kyolis-button>
     </div>
   </div>
 </section>
@@ -100,13 +112,32 @@
   <p>Un choix assumé : il respecte votre autorité sur votre réseau, assure la traçabilité du risque accepté attendue par NIS2 et ISO 27001.</p>
 </kyolis-posture>
 
+<!-- OBTENIR L'APPLICATION : le parcours d'accès sur demande -->
+<section class="section section--paper">
+  <div class="wrap">
+    <div class="narrow center" data-reveal>
+      <div class="eyebrow">Recevoir l'application</div>
+      <h2>Un accès personnel, pas un téléchargement anonyme</h2>
+      <p class="lead">Chaque poste reçoit son propre accès. Nous prenons le temps de vous connaître pour vous accompagner dès l'installation.</p>
+    </div>
+    <ol class="journey">
+      <li class="card" data-reveal><span class="key">1</span><h3>Vous faites votre demande</h3><p>Deux minutes : qui vous êtes et ce que vous voulez faire.</p></li>
+      <li class="card" data-reveal><span class="key">2</span><h3>Vous confirmez votre e-mail</h3><p>Un clic dans l'e-mail reçu pour valider votre adresse.</p></li>
+      <li class="card" data-reveal><span class="key">3</span><h3>On échange ensemble</h3><p>Un membre de l'équipe KYOLIS® vous contacte.</p></li>
+      <li class="card" data-reveal><span class="key">4</span><h3>Vous recevez votre accès</h3><p>Un lien personnel pour votre poste, puis chaque mise à jour.</p></li>
+    </ol>
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="section section--paper center">
-  <div class="wrap narrow" data-reveal>
+<section class="section cta-band">
+  <div class="wrap" data-reveal>
     <h2>Prêt à reprendre la main sur votre parc&nbsp;?</h2>
-    <p class="lead" style="margin-bottom:36px">Téléchargez KYOLIS Manager et gardez l'œil sur vos switches KYOLIS depuis un seul poste, dès aujourd'hui.</p>
-    <kyolis-button href="telechargement.html">Obtenir l'application</kyolis-button>
-    <kyolis-button href="fonctionnalites.html" variant="ghost">Voir les fonctionnalités</kyolis-button>
+    <p class="lead">Demandez votre accès à KYOLIS® Manager et gardez l'œil sur vos switches KYOLIS® depuis un seul poste.</p>
+    <div class="cta-band__actions">
+      <kyolis-button href="demande-acces.html">Recevoir l'application</kyolis-button>
+      <kyolis-button href="fonctionnalites.html" variant="ghost">Voir les fonctionnalités</kyolis-button>
+    </div>
   </div>
 </section>
 

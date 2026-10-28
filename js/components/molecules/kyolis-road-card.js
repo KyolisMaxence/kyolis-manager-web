@@ -19,11 +19,11 @@ class KyolisRoadCard extends KyolisElement {
       css: `
         :host{display:block}
         .card{
-          padding:32px 28px;border-radius:var(--radius-md);
-          background:var(--color-paper);border:1px solid var(--color-line);
-          transition:transform var(--ease),box-shadow var(--ease);height:100%;
+          padding:28px;border-radius:var(--radius-lg);
+          background:var(--color-white);border:1px solid var(--color-line);
+          transition:border-color var(--ease);height:100%;
         }
-        .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+        .card:hover{border-color:var(--color-line-strong)}
         .card.feature{background:var(--color-green-pale);border-color:rgba(53,154,102,.3)}
         h3{font-family:var(--font-display);font-size:18px;font-weight:700;
           color:var(--color-ink);margin:0 0 8px}

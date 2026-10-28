@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recevoir l'application — KYOLIS® Manager</title>
+<meta name="description" content="KYOLIS® Manager est accessible sur demande. Remplissez le formulaire, l'équipe KYOLIS® échange avec vous puis vous envoie un accès personnel.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/shared.css">
+<link rel="stylesheet" href="../css/pages/demande-acces.css">
+</head>
+<body>
+
+<kyolis-header active="demande"></kyolis-header>
+
+<section class="req">
+  <div class="wrap req__grid">
+
+    <div class="req__pitch">
+      <div class="eyebrow">Recevoir l'application</div>
+      <h1>Obtenez KYOLIS® Manager.</h1>
+      <p class="lead">Chez KYOLIS®, pas de téléchargement anonyme. Nous faisons connaissance, nous échangeons sur vos besoins, et notre équipe vous accompagne pour une prise en main rapide. Avec nous, vous n'êtes jamais seul face à l'outil.</p>
+      <ol class="flow">
+        <li>
+          <h3>Vous faites votre demande</h3>
+          <p>Quelques mots sur vos besoins, deux minutes suffisent.</p>
+        </li>
+        <li>
+          <h3>On échange ensemble</h3>
+          <p>Confirmez votre e-mail, on vous contacte rapidement.</p>
+        </li>
+        <li>
+          <h3>On vous accompagne</h3>
+          <p>Vous recevez un accès personnel à l'application et notre soutien.</p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Envoyé en arrière-plan à api/demande.php (script en bas de page), qui enregistre
+         la demande et envoie l'e-mail de vérification. Anti-robots sans service externe :
+         champ piège, délai minimum de remplissage, limite par adresse IP. -->
+    <form class="req-form" id="reqForm" action="../api/demande.php" method="post">
+      <h2 class="req-form__title">Votre demande</h2>
+      <p class="req-form__sub">Une demande correspond à un poste. Pour équiper plusieurs collègues, précisez-le dans votre message.</p>
+
+      <fieldset>
+        <legend>Vous</legend>
+        <div class="row">
+          <div class="field">
+            <label for="nom">Nom et prénom</label>
+            <input type="text" id="nom" name="nom" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="fonction">Fonction</label>
+            <input type="text" id="fonction" name="fonction" autocomplete="organization-title" placeholder="Ex. responsable informatique" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-mail professionnel</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="societe">Société</label>
+            <input type="text" id="societe" name="societe" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Votre réseau</legend>
+        <div class="row">
+          <div class="field">
+            <label for="equipe">Déjà équipé KYOLIS® ?</label>
+            <select id="equipe" name="equipe" required>
+              <option value="" disabled selected>Choisir</option>
+              <option value="oui">Oui, déjà équipé</option>
+              <option value="projet">En projet</option>
+              <option value="non">Non</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="parc">Nombre de switches</label>
+            <select id="parc" name="parc" required>
+              <option value="" disabled selected>Choisir</option>
+              <option value="1-5">1 à 5</option>
+              <option value="6-20">6 à 20</option>
+              <option value="21-50">21 à 50</option>
+              <option value="50+">Plus de 50</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Votre besoin</label>
+          <textarea id="message" name="message" required placeholder="Quelques mots sur votre réseau et ce que vous cherchez à faire."></textarea>
+        </div>
+      </fieldset>
+
+      <label class="nl-check">
+        <!-- Décochée par défaut (RGPD : une case pré-cochée ne vaut pas consentement) -->
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <span>J'accepte de recevoir la newsletter pour être informé des mises à jour, des nouveautés et des avis de sécurité.</span>
+      </label>
+      <p class="nl-note">Uniquement pour les mises à jour et les avis de sécurité de KYOLIS® Manager. Jamais de démarchage commercial, jamais transmis à un tiers. Désinscription en un clic dans chaque e-mail.</p>
+
+      <!-- Champ piège anti-spam : invisible, ne pas remplir. -->
+      <div class="hp" aria-hidden="true">
+        <label for="website">Ne pas remplir</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <p class="req-form__error" id="reqError" role="alert" hidden></p>
+      <button type="submit">Envoyer ma demande</button>
+      <p class="form-note">Après envoi, vous recevrez un e-mail pour confirmer votre adresse. On revient vers vous rapidement.</p>
+      <p class="form-note">Vos données servent uniquement à traiter votre demande. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</p>
+    </form>
+
+  </div>
+</section>
+
+<section class="section section--paper">
+  <div class="wrap">
+    <div class="narrow center" data-reveal>
+      <div class="eyebrow">Bon à savoir</div>
+      <h2>Prérequis</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="switch" size="24"></kyolis-icon></span><h3>Windows</h3><p>Application native Windows. Une version multiplateforme est planifiée.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="lock" size="24"></kyolis-icon></span><h3>Windows Hello</h3><p>Authentification forte par biométrie ou code PIN, requise à la première configuration. <a href="https://support.microsoft.com/fr-fr/windows/security/configure-windows-hello" target="_blank" rel="noopener">Configurer Windows Hello</a>.</p></div>
+      <div class="card req-item" data-reveal><span class="req-item__ic"><kyolis-icon name="offline" size="24"></kyolis-icon></span><h3>Aucune connexion requise</h3><p>L'usage courant ne dépend pas d'Internet. Idéal pour les sites isolés.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pop-up d'avertissement si l'utilisateur décoche la newsletter -->
+<div class="nl-modal" id="nlModal" hidden>
+  <div class="nl-modal__card" role="alertdialog" aria-modal="true" aria-labelledby="nlTitle" aria-describedby="nlDesc">
+    <h3 id="nlTitle">Vous risquez de manquer des informations</h3>
+    <p id="nlDesc">En décochant cette case, vous ne serez pas informé des mises à jour, des nouvelles fonctionnalités en cours ou ajoutées, ni des avis de sécurité.</p>
+    <div class="nl-modal__actions">
+      <button type="button" data-nl="keep">Rester informé</button>
+      <button type="button" data-nl="confirm">Décocher quand même</button>
+    </div>
+  </div>
+</div>
+
+<kyolis-footer></kyolis-footer>
+
+<script type="module" src="../js/main.js"></script>
+<script>
+  (function () {
+    var cb = document.getElementById('newsletter');
+    var modal = document.getElementById('nlModal');
+    if (!cb || !modal) return;
+    cb.addEventListener('change', function () {
+      if (!cb.checked) modal.hidden = false;
+    });
+    modal.addEventListener('click', function (e) {
+      var act = e.target.getAttribute('data-nl');
+      if (act === 'confirm') { modal.hidden = true; }          // laisse décoché
+      else if (act === 'keep' || e.target === modal) {          // recoche (bouton ou clic en dehors)
+        cb.checked = true; modal.hidden = true;
+      }
+    });
+  })();
+
+  /* Envoi de la demande à api/demande.php, sans quitter la page en cas d'erreur.
+     « duree » (temps passé sur le formulaire) sert à écarter les robots. */
+  (function () {
+    var form = document.getElementById('reqForm');
+    var err = document.getElementById('reqError');
+    var btn = form.querySelector('button[type="submit"]');
+    var debut = Date.now();
+    var ECHEC = "L'envoi n'a pas abouti. Vérifiez votre connexion, ou appelez-nous au 04 79 68 76 54.";
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+      var donnees = new FormData(form);
+      donnees.append('duree', String(Date.now() - debut));
+      fetch(form.action, { method: 'POST', body: donnees, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (rep) {
+          if (rep.ok) { window.location.href = 'demande-envoyee.html'; return; }
+          throw new Error(rep.message || ECHEC);
+        })
+        .catch(function (e2) {
+          err.textContent = e2 instanceof SyntaxError ? ECHEC : e2.message;
+          err.hidden = false;
+          btn.disabled = false;
+          btn.textContent = 'Envoyer ma demande';
+        });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -3,40 +3,56 @@
    Motifs récurrents qui ne méritent pas un composant mais sont réutilisés.
    ===================================================================== */
 
-/* Placeholder de capture honnête (accueil, fonctionnalités) */
-.shot{
-  background:repeating-linear-gradient(45deg,var(--color-mist),var(--color-mist) 12px,var(--color-paper) 12px,var(--color-paper) 24px);
-  border:1px dashed var(--color-line);border-radius:var(--radius-md);
-  display:flex;align-items:center;justify-content:center;color:var(--color-gray);
-  font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;
-  text-transform:uppercase;min-height:320px;text-align:center;padding:24px;
-}
-
 /* Liste à puce verte "check", utilisée dans les slots des blocs mesure
    et fonctionnalité. ::slotted ne stylant pas les descendants, ces règles
    vivent en light DOM (le <ul> est dans la page, projeté dans le slot). */
 .check-list{list-style:none;margin:0;padding:0}
-.check-list li{position:relative;padding-left:26px;margin-bottom:14px;color:#3c4a50;font-size:16px}
+.check-list li{position:relative;padding-left:26px;margin-bottom:12px;color:var(--color-body);font-size:16px}
 .check-list li::before{
-  content:"";position:absolute;left:0;top:9px;width:13px;height:7px;
+  content:"";position:absolute;left:0;top:9px;width:12px;height:6px;
   border-left:2px solid var(--color-green);border-bottom:2px solid var(--color-green);
   transform:rotate(-45deg);
 }
-.check-list li b{color:var(--color-ink)}
+.check-list li b{color:var(--color-ink);font-weight:600}
 
 /* Note encadrée discrète (feuille de route, mises à jour) */
-.note{font-size:15px;color:var(--color-gray);border-left:3px solid var(--color-mist);
+.note{font-size:15px;color:var(--color-gray);border-left:2px solid var(--color-line-strong);
   padding-left:18px;margin:18px auto 0;max-width:60ch}
 
 /* Grille de cartes générique 3 colonnes */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:64px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
 @media(max-width:860px){.grid-3{grid-template-columns:1fr}}
 
+/* Carte claire générique : filet de 1px, pas d'ombre. Le survol
+   renforce le filet au lieu de soulever la carte. */
+.card{background:var(--color-white);border:1px solid var(--color-line);
+  border-radius:var(--radius-lg);padding:28px;transition:border-color var(--ease)}
+.card:hover{border-color:var(--color-line-strong)}
+
 /* Hero clair centré, réutilisé par plusieurs pages secondaires */
-.hero-lite{padding:120px 0 72px;text-align:center;
-  background:radial-gradient(60% 50% at 50% 0%, var(--color-green-pale) 0%, rgba(241,248,244,0) 70%)}
-.hero-lite h1{font-size:var(--h1);line-height:1.05;margin:0 auto 24px;max-width:18ch;font-weight:900}
+.hero-lite{padding:112px 0 72px;text-align:center;border-bottom:1px solid var(--color-line);
+  background:
+    linear-gradient(var(--color-white),rgba(255,255,255,0) 40%,var(--color-white)),
+    repeating-linear-gradient(90deg,var(--color-line) 0 1px,transparent 1px 96px)}
+.hero-lite h1{font-size:var(--h1);line-height:1.05;margin:0 auto 22px;max-width:18ch;font-weight:700}
 .hero-lite h1 em{font-style:normal;color:var(--color-green)}
 .hero-lite .lead{max-width:60ch;margin:0 auto}
-.hero-lite .refs{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:44px}
-@media(max-width:680px){.hero-lite{padding:80px 0 56px}.hero-lite h1{font-size:36px}}
+.hero-lite .refs{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:40px}
+@media(max-width:680px){.hero-lite{padding:72px 0 56px}.hero-lite h1{font-size:36px}}
+
+/* Section sombre (échelle pétrole). Le texte passe en clair. */
+.dark{background:var(--dark-0);color:var(--dark-text)}
+.dark h1,.dark h2,.dark h3{color:var(--color-white)}
+.dark .lead{color:var(--dark-mute)}
+.dark .eyebrow{color:var(--color-green-soft)}
+
+/* Touche de clavier / étiquette courte (inspirée des keycaps Raycast) */
+.key{display:inline-flex;align-items:center;font-family:var(--font-display);font-weight:600;
+  font-size:12px;line-height:1;padding:5px 8px;border-radius:var(--radius-xs);
+  border:1px solid var(--color-line-strong);background:var(--color-white);color:var(--color-petrol)}
+
+/* Bandeau d'appel final, identique sur toutes les pages */
+.cta-band{text-align:center}
+.cta-band h2{max-width:20ch;margin-left:auto;margin-right:auto}
+.cta-band .lead{max-width:56ch;margin:0 auto 32px}
+.cta-band__actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}

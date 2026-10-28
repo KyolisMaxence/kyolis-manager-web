@@ -2,43 +2,72 @@
    Page Accueil — styles des sections propres à cette page (light DOM).
    Règle : on ne crée un composant que pour ce qui est réutilisé.
    Les layouts uniques (hero, grilles) vivent ici en classes de page.
-   Le placeholder .shot est dans shared.css (réutilisé ailleurs).
    ===================================================================== */
 
-/* Hero */
-.hero{padding:128px 0 96px;background:radial-gradient(58% 48% at 50% 0%, var(--color-green-pale) 0%, rgba(241,248,244,0) 70%)}
-.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-.hero__title{font-size:var(--h1);line-height:1.06;margin-bottom:24px;font-weight:900}
-.hero__title em{font-style:normal;color:var(--color-green)}
-.hero__lead{margin-bottom:36px;max-width:52ch}
-.hero__actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.hero__os{display:block;margin-top:14px;font-size:13px;color:var(--color-gray)}
-.hero__visual{position:relative}
-.hero__float{position:absolute;bottom:-22px;left:-22px;background:var(--color-white);
-  border:1px solid var(--color-line);border-radius:14px;padding:16px 20px;
-  box-shadow:var(--shadow-float);display:flex;align-items:center;gap:12px;color:var(--color-green)}
-.hero__float b{font-family:var(--font-display);font-size:14px;color:var(--color-ink);display:block}
-.hero__float span{font-size:12px;color:var(--color-gray)}
-@media(max-width:900px){.hero__grid{grid-template-columns:1fr;gap:48px}.hero__title{font-size:38px}.hero{padding:80px 0 64px}}
+/* Hero sombre. L'en-tête sombre est collant : on remonte le héros
+   dessous pour une continuité totale. */
+.hero{position:relative;overflow:hidden;margin-top:-77px;padding:180px 0 0;text-align:center}
+.hero .wrap{position:relative}
+.hero__text{max-width:860px;margin:0 auto}
+.hero__title{font-size:var(--h1);line-height:1.05;margin-bottom:22px;font-weight:700}
+.hero__title em{font-style:normal;color:var(--color-green-soft)}
+.hero__lead{margin:0 auto 32px;max-width:62ch}
+.hero__actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hero__os{margin-top:16px;font-size:13px;color:var(--dark-mute)}
+.hero__visual{margin:64px auto 0;max-width:1000px;position:relative}
+/* Le bas de la maquette se fond dans la section suivante */
+.hero__visual::after{content:"";position:absolute;left:-1px;right:-1px;bottom:-1px;height:90px;
+  background:linear-gradient(transparent,var(--dark-0))}
 
-/* Contexte réglementaire (intensité sombre de l'accueil) */
-.context{background:var(--color-petrol-darker);color:#fff;text-align:center;padding:84px 0}
-.eyebrow--light{color:var(--color-green-soft)}
-.context__title{color:#fff;font-size:30px;max-width:24ch;margin:0 auto 40px}
-.context__row{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:920px;margin:0 auto}
-.context__item h3{font-family:var(--font-display);font-weight:900;font-size:18px;color:var(--color-green-soft);margin-bottom:8px}
-.context__item p{font-size:15px;color:#c5d2d6;font-weight:300}
-@media(max-width:760px){.context__row{grid-template-columns:1fr;gap:28px}}
+/* Pastille flottante posée sur la maquette */
+/* Posée à cheval sur le coin haut droit de la fenêtre : ne masque aucune donnée */
+.hero__float{position:absolute;z-index:2;right:-24px;top:-30px;display:flex;align-items:center;gap:12px;
+  padding:12px 14px;text-align:left;color:var(--color-green-soft);
+  background:var(--dark-1);border:1px solid var(--dark-line-strong);border-radius:var(--radius-lg)}
+.hero__float b{display:block;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--color-white)}
+.hero__float span{font-size:12px;color:var(--dark-mute)}
+@media(max-width:700px){.hero__float{display:none}}
 
-/* Bénéfices */
-.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 64px;margin-top:72px}
-@media(max-width:760px){.benefits{grid-template-columns:1fr;gap:40px}}
+/* Moment signature (un seul par page, comme le bandeau de Raycast) :
+   des bandes diagonales vertes KYOLIS derrière le produit. */
+.hero__stripes{position:absolute;left:50%;top:330px;width:1400px;height:620px;transform:translateX(-50%);
+  background:repeating-linear-gradient(115deg,
+    rgba(53,154,102,0) 0 70px,
+    rgba(53,154,102,.22) 70px 130px,
+    rgba(53,154,102,0) 130px 200px);
+  -webkit-mask-image:radial-gradient(50% 50% at 50% 50%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(50% 50% at 50% 50%,#000 20%,transparent 75%);
+  pointer-events:none}
+@media(max-width:900px){.hero{padding-top:128px}.hero__title{font-size:40px}.hero__visual{margin-top:48px}}
+@media(max-width:560px){.hero__title{font-size:33px}}
+
+/* Comment ça marche : cartes sur l'échelle sombre */
+.steps{padding:56px 0 var(--space-12)}
+.steps__row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.step{background:var(--dark-1);border:1px solid var(--dark-line);border-radius:var(--radius-lg);padding:28px;text-align:left;
+  transition:border-color var(--ease)}
+.step:hover{border-color:var(--dark-line-strong)}
+.step h3{font-size:19px;font-weight:700;margin-bottom:8px;color:var(--color-green-soft)}
+.step p{font-size:15px;color:var(--dark-mute)}
+@media(max-width:760px){.steps__row{grid-template-columns:1fr}}
+
+/* Bénéfices : cartes à filet */
+.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.benefit{padding:32px}
+@media(max-width:760px){.benefits{grid-template-columns:1fr}}
 
 /* Piliers */
-.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px}
-.pillar{background:var(--color-white);border:1px solid var(--color-line);
-  border-radius:var(--radius-md);padding:30px 28px;transition:transform var(--ease),box-shadow var(--ease);color:var(--color-green)}
-.pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
-.pillar h3{font-size:17px;font-weight:700;margin:16px 0 7px}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.pillar{color:var(--color-green)}
+.pillar h3{font-size:16px;font-weight:700;margin:16px 0 8px;letter-spacing:-.01em}
 .pillar p{font-size:14.5px;color:var(--color-gray)}
-@media(max-width:760px){.pillars{grid-template-columns:1fr}}
+@media(max-width:980px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pillars{grid-template-columns:1fr}}
+
+/* Parcours d'accès */
+.journey{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.journey .key{margin-bottom:16px}
+.journey h3{font-size:16.5px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+.journey p{font-size:14.5px;color:var(--color-gray)}
+@media(max-width:980px){.journey{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.journey{grid-template-columns:1fr}}

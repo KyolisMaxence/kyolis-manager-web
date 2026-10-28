@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kyolis-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["tools/serve-php.py", "8000"],
+      "port": 8000
+    },
+    {
+      "name": "kyolis-site-statique",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["tools/serve.py", "8001"],
+      "port": 8001
+    }
+  ]
+}

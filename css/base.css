@@ -4,21 +4,19 @@
    Les composants encapsulés gèrent leur propre style ; ce fichier ne
    couvre que le document hôte et le contenu rédactionnel des pages.
    ---------------------------------------------------------------------
-   POLICES EN PRODUCTION
-   En prod, retirer l'@import Google Fonts et activer les @font-face
-   locaux (cohérence hors-ligne / souveraineté / CNIL). Fichiers .ttf
-   déjà présents dans le projet Django d'origine.
+   POLICES : servies par le site lui-même (assets/fonts/, licence OFL),
+   jamais par Google. Aucune adresse IP de visiteur ne part chez un tiers,
+   ce que promet la politique de confidentialité. Fichiers repris des
+   paquets Fontsource de l'application (sous-ensemble latin, accents compris).
    ===================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
-
-/* --- À activer en prod à la place de l'@import :
-@font-face{font-family:"Open Sans";src:url("/assets/fonts/OpenSans-Light.ttf") format("truetype");font-weight:300}
-@font-face{font-family:"Open Sans";src:url("/assets/fonts/OpenSans-Regular.ttf") format("truetype");font-weight:400}
-@font-face{font-family:"Open Sans";src:url("/assets/fonts/OpenSans-Bold.ttf") format("truetype");font-weight:700}
-@font-face{font-family:"Montserrat";src:url("/assets/fonts/Montserrat-Regular.ttf") format("truetype");font-weight:500}
-@font-face{font-family:"Montserrat";src:url("/assets/fonts/Montserrat-Bold.ttf") format("truetype");font-weight:700}
-@font-face{font-family:"Montserrat";src:url("/assets/fonts/Montserrat-Black.ttf") format("truetype");font-weight:900}
---- */
+@font-face{font-family:"Montserrat";src:url("../assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../assets/fonts/montserrat-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../assets/fonts/montserrat-latin-700-normal.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../assets/fonts/montserrat-latin-800-normal.woff2") format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Open Sans";src:url("../assets/fonts/open-sans-latin-300-normal.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Open Sans";src:url("../assets/fonts/open-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Open Sans";src:url("../assets/fonts/open-sans-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Open Sans";src:url("../assets/fonts/open-sans-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -36,21 +34,25 @@ img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--space-4)}
 .narrow{max-width:760px;margin:0 auto}
 .center{text-align:center}
+@media(max-width:560px){.wrap{padding:0 var(--space-2)}}
 
-/* Titres de contenu en light DOM (indexables) */
-h1,h2,h3{font-family:var(--font-display);letter-spacing:-.01em;color:var(--color-ink);line-height:1.12}
-h2{font-size:var(--h2);font-weight:900;margin-bottom:var(--space-3)}
-.lead{font-size:var(--text-xl);color:var(--color-gray);font-weight:300}
+/* Titres de contenu en light DOM (indexables).
+   Graisse 700 et approche serrée : plus de retenue que le 900 d'origine. */
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;color:var(--color-ink);line-height:1.12}
+h2{font-size:var(--h2);font-weight:700;margin-bottom:var(--space-3)}
+.lead{font-size:var(--text-lg);color:var(--color-gray);font-weight:400;line-height:1.6}
+@media(max-width:680px){h2{font-size:30px}.lead{font-size:17px}}
 
 /* Eyebrow réutilisé en light DOM */
-.eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:var(--text-xs);color:var(--color-green);margin-bottom:var(--space-2)}
+.eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:var(--text-xs);color:var(--color-green);margin-bottom:var(--space-2)}
 
-/* Sections */
-.section{padding:var(--space-13) 0}
-.section--paper{background:var(--color-paper)}
+/* Sections : rythme constant de 96px */
+.section{padding:var(--space-12) 0}
+.section--paper{background:var(--color-paper);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
+@media(max-width:680px){.section{padding:var(--space-8) 0}}
 
 /* Accessibilité : focus visible global */
-:focus-visible{outline:3px solid var(--color-green);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid var(--color-green);outline-offset:3px;border-radius:4px}
 
 /* Mouvement réduit respecté globalement */
 @media (prefers-reduced-motion:reduce){
